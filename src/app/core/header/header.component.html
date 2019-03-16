@@ -1,0 +1,46 @@
+<nav class="navbar" *ngIf="!(arrInitConfig.login)">
+  <div class="container-fluid">
+    <div class="navbar-content">
+      <div class="box-logo">
+        <div class="box-content-logo">
+          <img src="./assets/img/logo.png" />
+        </div>
+      </div>
+      <div class="box-menu">
+        <ul class="box-content-menu">
+          <li>
+            <a [routerLink]="['/home']" href="home" routerLinkActive="active" href="#">INICIO </a>
+          </li>
+          <li>
+            <a [routerLink]="['/agendar-cita']" href="agendar" routerLinkActive="active" href="#">AGENDAR CITA</a>
+          </li>
+          <li>
+            <a [routerLink]="['/historial-citas']" href="historial" routerLinkActive="active" href="#">HISTORIAL</a>
+          </li>
+        </ul>
+      </div>
+      <div class="box-perfil">
+        <div class="box-perfil-content">
+          <div class="box-photo">
+            <a [routerLink]="['/perfil-de-paciente']">
+              <img src="./assets/img/default.jpg"/>
+            </a>
+          </div>
+          <div class="box-info">
+            <div class="box-info-rol">
+              Bienvenido 
+            </div>
+            <div class="box-info-nickname">
+              LUIS RICARDO LUNA 
+            </div>
+          </div>
+          <div class="logout">
+            <a class="logout-text" [routerLink]="" (click)="onCerrarSesion()" matTooltip="Salir">
+              <img src="./assets/img/icons/shutdown.png" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

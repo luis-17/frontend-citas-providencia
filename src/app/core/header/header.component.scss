@@ -1,0 +1,132 @@
+@import 'src/var.scss';
+.navbar{
+    // box-shadow: 0 3px 12px rgba(0,0,0,0.3); 
+    box-shadow: -1px -4px 18px 0px rgba(70,70,70,0.4);
+    // height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+}
+// .navbar.collapsed .box-icon-menu{
+//     left: 10px;
+//     position: absolute;
+// }
+.navbar .navbar-content{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.navbar .navbar-content .box-logo{
+    display: flex;
+    width: 280px;
+    justify-content: center; 
+}
+.navbar .navbar-content .box-logo .box-content-logo{
+    margin: auto;
+    padding: 14px;
+    position: absolute;
+    border-radius: 0 0 6px 6px;
+    top: 0;
+    background-color: white;
+    box-shadow: 1px 1px 6px 0px rgba(70, 70, 70, 0.4);
+}
+.navbar .navbar-content .box-logo img{
+    margin: auto;
+    height: 76px;
+}
+.navbar .navbar-content .box-photo{ 
+    display: flex;
+    padding: 4px 20px;
+}
+.box-menu {
+    display: flex;
+    flex: 2;
+}
+.box-menu .box-content-menu{
+    display: flex;
+    margin: 0;
+    font-size: 20px;
+}
+.box-menu .box-content-menu li{
+    padding: 12px 20px 12px 12px;
+}
+.box-menu .box-content-menu li a{
+    color: $primary;
+    -webkit-transition: all 0.25s;
+    -moz-transition: all 0.25s;
+    -o-transition: all 0.25s;
+    -ms-transition: all 0.25s;
+    transition: all 0.25s;
+}
+.box-menu .box-content-menu li a:hover{
+    color: $accent;
+}
+.box-menu .box-content-menu li a.active{
+    color: $accent;
+    font-weight: 600;
+}
+// .navbar .navbar-content .box-icon-menu{
+//     display: flex;
+//     left: 10px;
+//     position: absolute;
+// }
+// .navbar .navbar-content .box-icon-menu mat-icon{
+//     font-size: 32px;
+//     padding-left: 6px;
+//     width: auto;
+//     height: auto;
+//     cursor: pointer;
+//     // color: white;
+//     color: #005e82;
+// }
+.navbar .navbar-content .box-info{
+    display: inline-block;
+    padding: 2px 20px;
+    border-left: 1px solid #e0e0e0;
+    font-weight: 100;
+}
+.navbar .navbar-content .box-info .box-info-nickname{
+    font-size: 16px;
+}
+.navbar .navbar-content .box-info .box-info-rol{
+    font-weight: bold;
+}
+.navbar .navbar-content .logout{
+    display: inline-block;
+    padding: 10px;
+    border-left: 1px solid #e0e0e0;
+    padding: 8px 20px;
+}
+.navbar .navbar-content .logout a{
+    // color: white;
+    font-weight: 600;
+    font-size: 14px;
+}
+.navbar .navbar-content .box-perfil{
+    flex: 1;
+    text-align: right;
+}
+.navbar .navbar-content .box-perfil .box-perfil-content {
+    // max-width: 340px;
+    float: right;
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+    // color: white;
+}
+// $accent: red; 
+.navbar .navbar-content .box-perfil .box-photo a{
+    // border: 3px solid $primary;
+    // border: 3px solid $warn;
+    border: 3px solid $accent;
+    border-radius: 50%;
+}
+.navbar .navbar-content .box-perfil img{ 
+    height: 35px;
+    border-radius: 50%;
+    width: 35px;
+}
+.navbar .navbar-content .box-perfil .logout img{
+    width: auto;
+    height: 26px;
+}

@@ -1,0 +1,103 @@
+<div class="page home">
+    <div class="container">
+        <div class="box-bienvenida row">
+            <div class="box-bienvenida-content col-lg-12">
+                <div class="box-principal">
+                    <div class="box-principal-content">
+                        <div class="box-titulo">
+                            <h3>¡Bienvenido LUIS RICARDO!</h3>
+                        </div>
+                        <div class="box-cuerpo">
+                            AGENDA TU CITA ONLINE, <br /> ASÍ DE RÁPIDO 
+                        </div>
+                        <div class="box-mini-icono">
+                            <img alt="Adelante..." src="./assets/img/icons/go.png" />
+                        </div>
+                    </div>
+                </div>
+                <div class="box-item box-agendar-ahora" [routerLink]="['/agendar-cita']">
+                    <div class="box-icono">
+                        <img alt="Agendar Cita" src="./assets/img/icons/hospital.svg" />
+                    </div>
+                    <div class="box-cuerpo">
+                        Escoge tu especialidad, turno y médico favorito en la fecha que desees y ¡LISTO! 
+                    </div>
+                    <div class="box-titulo">
+                        <a [routerLink]="">
+                            AGENDAR CITA <img alt="Agendar cita" src="./assets/img/icons/go-2.png" />
+                        </a>
+                    </div>
+                </div>
+                <div class="box-item box-historico" [routerLink]="['/historial-citas']">
+                    <div class="box-icono">
+                        <img alt="Ver Historial de Citas" src="./assets/img/icons/history.svg" />
+                    </div>
+                    <div class="box-cuerpo">
+                        Busca entre las citas que reservaste por este medio.  
+                    </div>
+                    <div class="box-titulo">
+                        <a [routerLink]="">
+                            IR AL HISTÓRICO <img alt="Mira tu historial" src="./assets/img/icons/go-2.png" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-perfil-paciente">
+            <h2> También puedes actualizar y ver a detalle tu perfil de paciente </h2>
+            <div class="box-perfil">
+                <div class="box-item">
+                    <img src="./assets/img/perfil/peso.png" alt="Peso" />
+                    <div class="box-item-rpta">
+                        <span class="pre-valor">PESO</span>
+                        <span class="valor"> 80 </span> <span class="post-valor">Kg.</span>
+                    </div> 
+                </div>
+                <div class="box-item">
+                    <img src="./assets/img/perfil/talla.png" alt="Estatura" />
+                    <div class="box-item-rpta">
+                        <span class="pre-valor">ESTATURA</span>
+                        <span class="valor">1.70 </span> <span class="post-valor">Mt.</span>
+                    </div> 
+                </div>
+                <div class="box-item">
+                    <img src="./assets/img/perfil/imc.png" alt="IMC" />
+                    <div class="box-item-rpta">
+                        <span class="pre-valor">IMC</span>
+                        <span class="valor">27.68</span>
+                    </div>
+                </div>
+                <div class="box-item">
+                    <img src="./assets/img/perfil/sangre.png" alt="Tipo de Sangre" />
+                    <div class="box-item-rpta">
+                        <span class="pre-valor">TIPO DE SANGRE</span>
+                        <span class="valor">B</span> <span class="post-valor"> + </span>
+                    </div> 
+                </div>
+                <div class="box-item">
+                    <img src="./assets/img/perfil/sexo.png" alt="Sexo" />
+                    <div class="box-item-rpta">
+                        <span class="pre-valor">SEXO</span>
+                        <span class="valor">M</span>
+                    </div>
+                </div>
+                <div class="box-item">
+                    <img src="./assets/img/perfil/edad.png" alt="Edad" />
+                    <div class="box-item-rpta">
+                        <span class="pre-valor">EDAD</span>
+                        <span class="valor">25</span> <span class="post-valor"> AÑOS </span>
+                    </div> 
+                </div>
+                <div class="box-action-edit">
+                    <a [routerLink]="['/perfil-de-paciente']"> Editar tus datos </a> 
+                </div>
+            </div>
+        </div>
+        <div class="box-acciones">
+            <div class="box-btn"> 
+                <button type="button" class="btn btn-rounded primary" [routerLink]="['/historial-citas']"> HISTORIAL </button> 
+                <button type="button" class="btn btn-rounded accent" [routerLink]="['/agendar-cita']"> AGENDAR CITA </button> 
+            </div>
+        </div>
+    </div>
+</div>

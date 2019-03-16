@@ -1,0 +1,111 @@
+@import 'src/var.scss';
+/* Historial page */
+.page.historial .box-tabs .box-tab-group{
+	display: flex;
+    justify-content: center;
+    font-size: 22px;
+    width: 80%;
+    margin: auto;
+    color: white;
+    border-radius: 15px;
+}
+.page.historial a{
+	color: inherit;
+}
+.page.historial p{
+	margin:0;
+}
+.page.historial .box-tabs .box-tab-group .box-tab-item{
+	padding: 10px;
+	text-align: center;
+	width: 100%;
+	background-color: $primary;
+	opacity: 0.5;
+}
+.page.historial .box-tabs .box-tab-group .box-tab-item:first-child{
+	border-right: 1px solid;
+	border-radius: 15px 0 0 15px;
+}
+.page.historial .box-tabs .box-tab-group .box-tab-item:last-child{
+	border-radius: 0 15px 15px 0;
+}
+.page.historial .box-tabs .box-tab-group .box-tab-item.active{
+	opacity: 1;
+}
+.page.historial .box-content-tabs{
+	width: 80%;
+	margin: auto;
+}
+.page.historial .box-content-tabs .box-tab{
+	margin-top: 10px;
+}
+.page.historial .box-content-tabs .box-tab .box-periodo{
+	padding: 6px;
+	text-align: center;
+	font-size: 30px;
+	font-weight: 600;
+	color: #829723;
+}
+.page.historial .box-content-items .box-item{
+	display: flex;
+}
+.page.historial .box-content-items .box-item .box-fecha{
+	width: 180px;
+	text-align: center;
+	position: relative;
+}
+.page.historial .box-content-items .box-item .box-fecha .box-content-fecha{
+	margin: 0 45px;
+	background-color: #21b8c6;
+	color: white;
+	height: 80px;
+}
+.page.historial .box-content-items .box-item .box-fecha .box-content-fecha .mes{
+	font-size: 20px;
+  line-height: 1;
+  padding: 8px 0 4px;
+}
+.page.historial .box-content-items .box-item .box-fecha .box-content-fecha .dia{
+	font-size: 40px;
+	line-height: 1;
+	font-weight: 800;
+}
+.page.historial .box-content-items .box-item .box-detail{
+	font-size: 18px;
+	padding-bottom: 5%;
+}
+.page.historial .box-content-items .box-item .box-detail .box-nombre{
+	font-weight: 800;
+  color: #21b8c6;
+}
+.page.historial .box-content-items .box-item .box-detail .box-detaiil-item{
+	display: flex;
+  align-items: center;
+}
+.page.historial .box-content-items .box-item .box-detail .box-detaiil-item .icon{
+	margin-right: 10px;
+}
+.page.historial .box-detail .box-action{
+	margin-top: 10px;
+}
+.page.historial .box-detail .box-action button{
+	margin: 0 10px 0 0;
+}
+.page.historial .box-content-items .timeline{
+	position: absolute;
+	height: 100%;
+	width: 2px;
+	background-color: $suplem;
+	top: 0;
+	left: 50%;
+	z-index: -1;
+}
+.page.historial .box-end{
+	left: 44%;
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    background-color: $suplem;
+    position: absolute;
+    bottom: 0;
+}

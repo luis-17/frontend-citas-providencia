@@ -1,0 +1,61 @@
+@import 'src/var.scss';
+/* Login page */
+.login .navbar{
+    background-color: #003d71;
+    box-shadow: 0px 11px 8px -8px rgba(70,70,70,0.4);
+}
+.login .box-header{
+    margin: auto;
+}
+.login .box-header img{
+    margin: 8px;
+    height: 70px;
+}
+.login .box-login{
+    margin: auto;
+    padding: 8%;
+}
+.login .box-login .box-login-content{
+    width: 400px;
+    margin: auto;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+}
+.login .box-login .box-login-content h2{
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 28px;
+    text-align: center;
+    background-color: #fafafa;
+    color: $accent;
+}
+.login .box-login .box-login-content .box-inputs{
+    padding: 25px;
+}
+.login .box-login .box-login-content .box-inputs button.btn-login{
+    width: 100%;
+    margin: auto;
+    display: block;
+}
+.login .box-login .box-login-content .box-inputs a{
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    margin: 15px 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #21b8c6;
+}
+.login .box-login .box-login-content .box-inputs ~ button{
+    width: inherit;
+    background-color: $accent; 
+    color: white;
+    height: 42px;
+    font-size: 15px;
+    font-weight: 300;
+}
+.login .box-login .box-login-content .form-group{
+    width: 100%;
+}
+.login .box-login .box-login-content .mat-form-field{
+    width: inherit;
+}

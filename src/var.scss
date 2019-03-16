@@ -1,0 +1,22 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$app-primary:       mat-palette($mat-light-blue, 900);
+$app-accent:        mat-palette($mat-green, 600);
+$app-warn:          mat-palette($mat-amber, 400);
+$app-text-regular:  mat-palette($mat-blue-grey, 500);
+
+$primary: #003d71;
+$accent: #829723;
+$warn: #f4cc21;
+$suplem: #21b8c6;
+$text-regular: mat-color($app-text-regular);
+
+$config: mat-typography-config(
+  $font-family: 'Mukta, Roboto, Helvetica Neue',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+$cp-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+@include angular-material-theme($cp-theme);

@@ -1,0 +1,274 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('//fonts.googleapis.com/icon?family=Material+Icons');
+
+@import url('//fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700,800|Roboto:300,300i,400,400i,500,500i,700,700i');
+@import url('//fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+
+@import 'src/var.scss';
+
+
+*{padding:0; margin:0; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
+*:focus{outline:none;}
+
+html {
+  top: unset !important;
+  height: 100%;
+}
+body {
+  font-family: mat-font-family($config);
+  color: $text-regular;
+  font-size: 14px; 
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.page, 
+.page.perfil, 
+.page.perfil .container-fluid,
+.page.perfil .container-fluid .row,
+.page.perfil .container-fluid .row .box-sidebar{
+  height: 100% !important;
+}
+a img{border:none;}
+
+a{
+    color:inherit;
+    display:inline-block;
+    text-decoration:none !important;
+}
+
+ol, ul {list-style:none;}
+
+.-hidden{display:none;}
+
+h1, h2, h3, h4 {
+  font-weight: normal;
+}
+
+.container{
+  margin: 0 auto;
+  width: 100%;
+}
+
+// NAV 
+app-header{
+  width: 100%;
+  background-color: white;
+  display: block;
+  position: fixed;
+  right: 0;
+  z-index: 2;
+  // background: linear-gradient(to right, #d6f1f6 5%, #00aac9 50%, #005e82 90%);
+}
+.navbar{
+  padding: 0;
+}
+// CONTENIDO 
+.page{
+  padding-top: 60px;
+}
+.page.login {
+  padding: 0;
+}
+// .content-page{
+//   padding: 30px;
+// }
+
+
+// FORM FIELDS 
+label{
+  margin: 0;
+}
+.mat-form-field{
+  font-size: 12px !important;
+}
+// .mat-label-only{
+//   color: rgba(0, 0, 0, 0.6);
+// }
+.mat-form-field .mat-form-field-label mat-label{
+  font-size: 12px;
+}
+.mat-form-field-wrapper{
+  padding-bottom: 0;
+}
+.field-sm .mat-form-field-infix{
+  border-top: 0.8em solid transparent;
+  padding: 0.8em 0 1em 0;
+}
+// .field-cp .mat-form-field-appearance-outline .mat-form-field-outline-thick{
+
+// }
+// .mat-form-field-appearance-outline .mat-form-field-outline-thick{
+//   color: red; 
+// }
+// .mat-form-field-appearance-outline .mat-form-field-outline-thick{
+//   color: yellow; 
+// }
+// .field-cp.mat-form-field-appearance-outline .mat-form-field-outline-thick{
+//   color: red; 
+//   // color: $primary; 
+// }
+.field-cp .mat-form-field-outline-thick{
+  color: $primary; 
+}
+
+// CARDS 
+.mat-card-header .mat-card-title{
+  font-weight: 500;
+  font-size: 20px;
+}
+
+//buttons 
+.mat-flat-button.mat-primary[disabled]{
+  background-color: rgba(0, 172, 193, 0.5);
+  color: white;
+}
+.mat-form-field .mat-stroked-button{
+  border: 1px solid lightgray;
+  padding: 0 5px !important;
+}
+.mat-form-field .mat-flat-button{
+  color: white;
+  padding: 0 5px !important;
+}
+.btn.btn-rounded:hover{
+  color: white;
+}
+button.btn-rounded{
+  width: 200px;
+  border-radius: 8px;
+  color: white;
+  height: 42px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+button.btn-rounded.primary{
+  background-color: $primary;
+}
+button.btn-rounded.accent{
+  background-color: $accent;
+}
+button.btn-sm{
+  height: 30px;
+  width: 120px;
+}
+// clases auxiliares 
+.none{
+  display: none !important;
+}
+.pull-right{
+  float: right;
+}
+// .mat-form-field{
+//   width: 100%;
+// }
+.full-width{
+  width: 100%;
+  display: block;
+}
+// .btn-action.addon{
+//   position: absolute;
+//   right: 0;
+//   margin: -15px 0;
+//   padding: 0;
+//   min-width: 32px;
+// }
+// .btn-left, .mat-raised-button.btn-left{
+//   left: 2px;
+//   position: absolute;
+// }
+// .btn-right, .mat-raised-button.btn-right{
+//   right: 2px;
+//   position: absolute;
+// }
+// .btn-wrap-space span{
+//   white-space: normal;
+//   text-overflow: ellipsis;
+//   line-height: 1.2;
+//   display: inline-flex;
+//   align-items: center;
+//   margin: auto;
+// }
+// .btn-wrap-space span .mat-icon{
+//   font-size: 30px;
+//   margin-right: 10px;
+// }
+
+
+// .form .btn-action{
+//   position: absolute;
+//   right: -4px;
+//   margin: -15px 0;
+//   padding: 0;
+//   min-width: 32px;
+// }
+// .form .actions-form figure{
+//   text-align: right;
+//   display: block;
+// }
+.navbar .navbar-content .logout .logout-icon{
+  display: none;
+}
+.navbar .navbar-content .logout .logout-text{
+  display: block;
+}
+/* MODALS */
+.mat-dialog-header{
+  padding-bottom: 10px;
+  margin: 0 0 20px;
+  border-bottom: 1px solid #e0e0e0;
+  line-height: 1;
+  display: block;
+}
+.mat-dialog-header .mat-dialog-title{
+  display: inline-block;
+  margin: 0;
+  text-transform: uppercase;
+  color: $accent;
+}
+.mat-dialog-header .mat-dialog-title ~ button{
+  float: right;
+  padding: 0;
+  min-width: 40px;
+  width: 40px;
+  color: #6e7683;
+  background-color: #dfdfdf;
+  border: unset;
+}
+/* ================== */
+/* ESTILOS RESPONSIVE */
+/* ================== */ 
+
+/* Extra small devices (phones, 600px and down) XS  */
+@media only screen and (max-width: 600px) {
+  .navbar .navbar-content .logout .logout-icon{
+    display: block;
+  }
+  .navbar .navbar-content .logout .logout-text{
+    display: none;
+  }
+  .navbar .navbar-content .box-logo img{
+    height: 28px;
+    padding-left: 10px;
+  }
+} 
+/* Small devices (portrait tablets and large phones, 600px and up) SM */
+@media only screen and (max-width: 768px) {
+  
+} 
+/* Medium devices (landscape tablets, 768px and up) MD */
+@media only screen and (max-width: 992px) {
+  
+} 
+
+/* Large devices (laptops/desktops, 992px and up) LG */
+@media only screen and (max-width: 1200px) {
+  
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) XL */
+@media only screen and (min-width: 1200px) {
+  
+}

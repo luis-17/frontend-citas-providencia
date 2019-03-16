@@ -1,0 +1,42 @@
+<div class="mat-dialog-header">
+    <h1 class="mat-dialog-title" mat-dialog-title> Seleccione la hora deseada </h1> 
+    <button mat-stroked-button (click)="onDialogClose()"> 
+        <mat-icon>close</mat-icon>
+    </button> 
+</div>
+<div class="mat-dialog-content" mat-dialog-content> 
+    <div class="box-turnos">
+        <div class="box-content-turnos">
+            <div class="box-turno">
+                <div class="box-eleccion">
+                    <mat-radio-group class="" [(ngModel)]="eleccionTurno">
+                        <mat-radio-button class="rb-turno" color="primary" value="1">
+                            <span> 08:00 </span>
+                        </mat-radio-button>
+                        <mat-radio-button class="rb-turno" color="primary">
+                            <span> 08:40 </span>
+                        </mat-radio-button>
+                        <mat-radio-button class="rb-turno" color="primary">
+                            <span> 09:20 </span>
+                        </mat-radio-button>
+                        <mat-radio-button class="rb-turno" color="primary">
+                            <span> 10:00 </span>
+                        </mat-radio-button>
+                        <mat-radio-button class="rb-turno" color="primary">
+                            <span> 10:40 </span>
+                        </mat-radio-button>
+                        <mat-radio-button class="rb-turno" color="primary">
+                            <span> 11:20 </span>
+                        </mat-radio-button>
+                        <mat-radio-button class="rb-turno" color="primary">
+                            <span> 12:00 </span>
+                        </mat-radio-button>
+                    </mat-radio-group> 
+                </div>
+            </div>
+        </div>
+        <div class="box-action">
+            <button class="btn primary" mat-raised-button color="primary" (click)="elegirTurno();">ELEGIR</button>
+        </div>
+    </div>
+</div>

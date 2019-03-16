@@ -1,0 +1,10 @@
+<app-header [arrInitConfig]="arrInitConfig" ></app-header>
+<div class="page" [ngClass]="arrInitConfig.class">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+</div>
+<app-footer></app-footer>
+<!-- <app-header *ngIf="!(globals.arrInitConfig.login)"></app-header>
+<div class="page" [ngClass]="globals.arrInitConfig.class">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+</div>
+<app-footer></app-footer> -->

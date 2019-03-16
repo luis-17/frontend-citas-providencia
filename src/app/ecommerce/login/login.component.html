@@ -1,0 +1,33 @@
+<div class="page login">
+  <nav class="navbar">
+    <div class="container-fluid">
+      <div class="box-header">
+        <img src="./assets/img/logo-white.png" />
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="box-login">
+      <div class="box-login-content">
+        <h2> Portal del Paciente </h2>
+        <form class="box-inputs">
+          <div class="form-group">
+            <mat-form-field class="item field-sm field-cp" appearance="outline">
+              <mat-label>Nro de Documento</mat-label>
+              <input autocomplete="off" matInput type="text" placeholder="Nro de Documento" [(ngModel)]="fLogin.numDocumento" name="numDocumento">
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="item field-sm field-cp" appearance="outline">
+              <mat-label>Clave</mat-label>
+              <input autocomplete="off" matInput type="password" placeholder="Clave" [(ngModel)]="fLogin.clave" name="clave">
+            </mat-form-field>
+          </div> 
+          <button class="btn-login" mat-raised-button color="primary" (click)="iniciarSesion();">INICIAR SESIÓN</button>
+          <a [routerLink]="" (click)="olvidoClave();"> Olvidé mi clave </a>
+        </form>
+        <button mat-raised-button (click)="darDeAlta();">¿No tienes cuenta? ¡Regístrate Ahora!</button>
+      </div>
+    </div>
+  </div>
+</div>

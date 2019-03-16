@@ -1,0 +1,24 @@
+@import 'src/var.scss';
+.box-confirmacion .box-text-confirm{
+    font-size: 26px;
+    text-align: center;
+    color: $primary;
+    font-weight: 700;
+    padding-top: 20px;
+}
+.box-confirmacion .box-text-info{
+    font-size: 26px;
+    text-align: center;
+    color: #829723;
+    font-weight: 400;
+    padding: 10px 0 4px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+.box-confirmacion .box-action{
+    text-align: center;
+    margin: 20px 0;
+}
+.box-confirmacion .box-action button{
+    // width: 80px;
+    margin: 0 10px 0 0;
+}

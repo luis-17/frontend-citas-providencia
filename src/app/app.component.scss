@@ -1,0 +1,12 @@
+app-menu{
+  transition: left 1000ms cubic-bezier(0.05, 0.74, 0.27, 0.99), top 1000ms cubic-bezier(0.05, 0.74, 0.27, 0.99);
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+app-menu.menu-sm {
+    left: -215px;
+}
+app-menu.menu-sm ~ .page{
+    padding-left: 60px;
+}

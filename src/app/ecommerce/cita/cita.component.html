@@ -1,0 +1,162 @@
+<div class="page cita">
+  <div class="container">
+    <div class="row">
+      <section class="box-filtros">
+        <h4> <strong> PASO 1: </strong> Seleccione Filtros </h4>
+        <div class="form-group">
+          <mat-form-field class="item field-sm field-cp" appearance="outline">
+            <mat-label>LA CITA ES PARA:</mat-label>
+            <mat-select  placeholder="LA CITA ES PARA:"
+                [(ngModel)]="fData.paciente" [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let row of arrPaciente" [value]="row.id">
+                    {{row.paciente}}
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field class="item field-sm field-cp" appearance="outline">
+            <mat-label>SELECCIONE LA ESPECIALIDAD</mat-label>
+            <mat-select  placeholder="ESPECIALIDAD"
+                [(ngModel)]="fData.especialidad" [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let row of arrEspecialidad" [value]="row.id">
+                    {{row.especialidad}}
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="item field-sm field-cp" appearance="outline">
+              <mat-label>SELECCIONE MÉDICO</mat-label>
+              <mat-select  placeholder="MÉDICO"
+                  [(ngModel)]="fData.medico" [ngModelOptions]="{standalone: true}">
+                  <mat-option *ngFor="let row of arrMedico" [value]="row.id">
+                      {{row.medico}}
+                  </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        <div class="form-group">
+          <mat-form-field class="item field-sm field-cp" appearance="outline">
+            <mat-label>SELECCIONE GARANTE</mat-label>
+            <mat-select  placeholder="GARANTE"
+                [(ngModel)]="fData.garante" [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let row of arrGarante" [value]="row.garante">
+                    {{row.garante}}
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="box-action">
+            <button class="btn primary" mat-raised-button color="primary" (click)="procesarCita();">PROCESAR</button> 
+        </div>
+      </section>
+      <section class="box-calendario">
+        <h4> <strong> PASO 2: </strong> Elija su Turno </h4>
+        <div class="box-content-calendario">
+          <div class="box-title-mes">
+            <p> Marzo </p> 
+            <div class="box-paginate">
+              <div class="icon icon-prev"><mat-icon>keyboard_arrow_left</mat-icon> </div>
+              <div class="icon icon-next"><mat-icon>keyboard_arrow_right</mat-icon> </div>
+            </div> 
+          </div>
+          <div class="box-title-semana">
+            <div class="item-semana"> Lun. </div>
+            <div class="item-semana"> Mar. </div>
+            <div class="item-semana"> Mie. </div>
+            <div class="item-semana"> Jue. </div>
+            <div class="item-semana"> Vie. </div>
+            <div class="item-semana"> Sab. </div>
+            <div class="item-semana feriado"> Dom. </div>
+          </div>
+          <div class="box-dias">
+            <div class="box-row">
+              <div class="box-dia"> </div>
+              <div class="box-dia"> </div>
+              <div class="box-dia"> </div>
+              <div class="box-dia"> </div>
+              <div class="box-dia"> 01 </div>
+              <div class="box-dia"> 02 </div>
+              <div class="box-dia"> 03 </div>
+            </div>
+            <div class="box-row">
+              <div class="box-dia"> 04 </div>
+              <div class="box-dia"> 05 </div>
+              <div class="box-dia"> 06 </div>
+              <div class="box-dia"> 07 </div>
+              <div class="box-dia"> 08 </div>
+              <div class="box-dia"> 09 </div>
+              <div class="box-dia"> 10 </div>
+            </div>
+            <div class="box-row">
+              <div class="box-dia"> 11 </div>
+              <div class="box-dia"> 12 </div>
+              <div class="box-dia"> 13 </div>
+              <div class="box-dia active"v (click)="openDialogTurno();"> 14 </div>
+              <div class="box-dia active"> 15 </div>
+              <div class="box-dia active"> 16 </div>
+              <div class="box-dia"> 17 </div>
+            </div>
+            <div class="box-row">
+              <div class="box-dia"> 18 </div>
+              <div class="box-dia"> 19 </div>
+              <div class="box-dia"> 20 </div>
+              <div class="box-dia active"> 21 </div>
+              <div class="box-dia active"> 22 </div>
+              <div class="box-dia active"> 23 </div>
+              <div class="box-dia"> 24 </div>
+            </div>
+            <div class="box-row">
+              <div class="box-dia active"> 25 </div>
+              <div class="box-dia active"> 26 </div>
+              <div class="box-dia active"> 27 </div>
+              <div class="box-dia active"> 28 </div>
+              <div class="box-dia active"> 29 </div>
+              <div class="box-dia active"> 30 </div>
+              <div class="box-dia"> 31 </div>
+            </div>
+          </div>
+        </div>
+        <div class="box-leyenda">
+          <div class="box-item-leyenda">
+            <div class="box-cuadro active"> </div>
+            <div class="box-label"> DISPONIBLE </div>
+          </div>
+          <div class="box-item-leyenda">
+            <div class="box-cuadro disabled"> </div>
+            <div class="box-label"> NO DISPONIBLE </div>
+          </div>
+        </div>
+      </section>
+      <section class="box-confirmacion">
+        <h4> <strong> PASO 3: </strong> Confirmación </h4>
+        <div class="box-resumen">
+          <div class="box-group">
+            <label class="box-label"> PACIENTE: </label> 
+            <p> LUIS RICARDO LUNA SOTO </p>
+          </div>
+          <div class="box-group">
+            <label class="box-label"> ESPECIALIDAD: </label> 
+            <p> CARDIOLOGÍA </p>
+          </div>
+          <div class="box-group">
+            <label class="box-label"> MÉDICO: </label> 
+            <p> FERNANDO CABEZAS QUISPE </p>
+          </div>
+          <div class="box-group">
+            <label class="box-label"> GARANTE: </label> 
+            <p> PACIFICO EPS </p>
+          </div>
+          <div class="box-group">
+            <label class="box-label"> FECHA/TURNO: </label> 
+            <p> Viernes 22 de Marzo / 3:30pm. </p>
+          </div>
+        </div>
+        <div class="box-action">
+          <button class="btn primary" mat-raised-button color="primary" (click)="confirmarCita();">CONFIRMAR CITA</button>
+        </div>
+      </section>
+    </div>
+  </div> 
+</div>

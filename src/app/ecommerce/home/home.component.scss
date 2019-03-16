@@ -1,0 +1,202 @@
+@import 'src/var.scss';
+/* Home page */
+.page.home .box-bienvenida .box-principal{
+    flex: 2.5;
+    // background-image: url('/assets/img/home.jpg'); 
+    background-image: url('http://104.131.176.122/ecommerce-dev/assets/img/home.jpg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px 0 0 6px;
+}
+.page.home .box-bienvenida .box-principal .box-principal-content{
+    position: absolute;
+}
+.page.home .box-bienvenida .box-principal h3{
+    font-size: 30px;
+    font-weight: 800;
+}
+.page.home .box-bienvenida .box-principal .box-cuerpo{
+    font-size: 20px;
+    width: 75%;
+    line-height: 1.15;
+}
+.page.home .box-bienvenida .box-principal::before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: $warn;
+    background: #0084ad;
+    background: #0032a0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.6;
+    border-radius: 6px 0 0 6px;
+}
+/*.page.home .box-bienvenida .box-principal{
+
+}*/
+.page.home .box-bienvenida .box-bienvenida-content{
+    display: flex;
+    color: white;
+}
+.page.home .box-bienvenida .box-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px 40px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.15;
+    cursor: pointer;
+    cursor: hand;
+    -webkit-transition: all 0.25s;
+    -moz-transition: all 0.25s;
+    -o-transition: all 0.25s;
+    -ms-transition: all 0.25s;
+    transition: all 0.25s;
+}
+.page.home .box-bienvenida .box-item:hover{
+    background: $accent;
+    -webkit-box-shadow: 0px 4px 14px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 4px 14px 1px rgba(0,0,0,0.2);
+}
+.page.home .box-bienvenida .box-agendar-ahora{
+    flex: 1.6;
+    background-color: $primary; 
+    background-color: #0084ad;
+    background-color: #002678;
+}
+.page.home .box-bienvenida .box-icono{
+    width: 100%;
+}
+
+.page.home .box-bienvenida .box-historico{
+    flex: 1.6;
+    border-radius: 0 6px 6px 0;
+    background-color: $accent; 
+    background-color: #0084ad;
+    background-color: #065598;
+    background-color: #056e8f;
+    background-color: #0033a0;
+}
+.page.home .box-bienvenida .box-titulo{
+    width: 100%;
+}
+.page.home .box-bienvenida .box-titulo > a{
+    font-size: 20px;
+    font-weight: 800;
+    padding-top: 32px;
+    color: inherit;
+}
+.page.home .box-bienvenida .box-titulo > a > img{
+    height: 32px;
+    margin-top: -4px;
+    margin-left: -6px;
+}
+.page.home .box-bienvenida .box-agendar-ahora .box-icono > img{
+    height: 75px;
+}
+.page.home .box-bienvenida .box-historico .box-icono > img{
+    height: 72px;
+    padding-bottom: 12px;
+}
+
+.page.home .box-perfil-paciente{
+    margin-top: 5%;
+}
+.page.home .box-perfil-paciente h2{
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    color: $primary; 
+    margin-bottom: 3%;
+}
+.page.home .box-perfil-paciente .box-perfil{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 3%;
+    border: 1px solid $accent;
+    margin-bottom: 5%;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+}
+.page.home .box-perfil-paciente .box-perfil p{
+    // margin-bottom: 5px;
+    // color: $primary;
+    margin-bottom: 5px;
+    font-weight: 800;
+    color: $accent;
+    font-size: 18px;
+}
+.page.home .box-perfil-paciente .box-perfil .box-item{
+    display: flex;
+    min-width: 150px;
+}
+.page.home .box-perfil-paciente .box-perfil .box-action-edit{
+    position: absolute;
+    bottom: -15px;
+    background-color: white;
+    font-size: 18px;
+    padding: 0 22px;
+    color: $accent;
+    font-weight: 600;
+}
+.page.home .box-perfil-paciente .box-perfil .box-item .box-item-rpta{
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    width: 100%;
+    color: #00c9d2;
+}
+.page.home .box-perfil-paciente .box-perfil img{
+    height: 50px; 
+}
+.page.home .box-perfil-paciente .box-perfil .box-item-rpta .valor{
+    margin-left: 4px;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 0.75;
+}
+.page.home .box-perfil-paciente .box-perfil .box-item-rpta .pre-valor{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 4px;
+    font-size: 12px;
+    color: $primary;
+}
+.page.home .box-perfil-paciente .box-perfil .box-item-rpta .post-valor{
+    font-weight: 200;
+    line-height: 1;
+    font-size: 16px;
+    padding-left: 4px;
+}
+.page.home .box-acciones .box-btn{
+    text-align: center;
+}
+.page.home .box-acciones {
+    margin-bottom: 5%;
+}
+// .page.home .box-acciones .box-btn button{
+//     width: 200px;
+//     border-radius: 8px;
+//     color: white;
+//     height: 42px;
+//     margin-right: 20px;
+//     margin-left: 20px;
+// }
+// .page.home .box-acciones .box-btn button.primary{
+//     background-color: $primary;
+// }
+// .page.home .box-acciones .box-btn button.accent{
+//     background-color: $accent;
+// }

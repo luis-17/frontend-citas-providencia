@@ -1,0 +1,153 @@
+<div class="page historial">
+  <div class="container">
+    <div class="box-historial">
+			<div class="box-tabs">
+				<div class="box-tab-group">
+					<div class="box-tab-item" [ngClass]="fTab.classCP" (click)="onTabMe('CP')">
+						<a [routerLink]="">
+							<span>CITAS PENDIENTES</span>
+						</a>
+					</div>
+					<div class="box-tab-item" [ngClass]="fTab.classCR" (click)="onTabMe('CR')">
+						<a [routerLink]="">
+							<span>CITAS REALIZADAS</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="box-content-tabs">
+				<div class="box-tab box-tab-cp" *ngIf="fTabContent.classCP">
+					<div class="box-periodo"> MARZO 2019 </div>
+					<div class="box-content-items">
+						<div class="box-item">
+							<div class="box-fecha">
+								<div class="box-content-fecha">
+									<p class="mes">Marzo</p>
+									<p class="dia">28</p> 
+								</div>
+								<div class="timeline"></div>
+								<!-- <div class="box-end"></div> -->
+							</div>
+							<div class="box-detail">
+								<div class="box-nombre">
+									LUIS RICARDO LUNA SOTO | TITULAR
+								</div>
+								<div class="box-detaiil-item box-hora">
+									<div class="icon">
+										<mat-icon>av_timer</mat-icon>
+									</div>
+									<div class="value">09:45</div>
+								</div>
+								<div class="box-detaiil-item box-medico">
+									<div class="icon">
+										<mat-icon>person_pin</mat-icon>
+									</div>
+									<div class="value">TOCE YAÑEZ LUIS MANUEL</div>
+								</div>
+								<div class="box-detaiil-item box-especialidad">
+									<div class="icon">
+										<mat-icon>book</mat-icon>
+									</div>
+									<div class="value">CARDIOLOGÍA</div>
+								</div>
+								<!-- <div class="box-detaiil-item box-status">
+									<div class="icon">
+										<mat-icon>state</mat-icon>
+									</div>
+									<div class="value">RESERVADO</div>
+								</div> -->
+								<div class="box-action">
+									<button class="btn btn-rounded btn-sm accent" type="button">PAGAR CITA</button>
+									<button class="btn btn-rounded btn-sm btn-danger" (click)="openConfirmAnularCita();" type="button">ANULAR CITA</button>
+								</div>
+							</div>
+						</div>
+						<div class="box-item">
+							<div class="box-fecha">
+								<div class="box-content-fecha">
+									<p class="mes">Marzo</p>
+									<p class="dia">23</p> 
+								</div>
+								<div class="timeline"></div>
+								<div class="box-end"></div>
+							</div>
+							<div class="box-detail">
+								<div class="box-nombre">
+									LUIS RICARDO LUNA SOTO | TITULAR
+								</div>
+								<div class="box-detaiil-item box-hora">
+									<div class="icon">
+										<mat-icon>av_timer</mat-icon>
+									</div>
+									<div class="value">09:45</div>
+								</div>
+								<div class="box-detaiil-item box-medico">
+									<div class="icon">
+										<mat-icon>person_pin</mat-icon>
+									</div>
+									<div class="value">TOCE YAÑEZ LUIS MANUEL</div>
+								</div>
+								<div class="box-detaiil-item box-especialidad">
+									<div class="icon">
+										<mat-icon>book</mat-icon>
+									</div>
+									<div class="value">CARDIOLOGÍA</div>
+								</div>
+								<!-- <div class="box-detaiil-item box-status">
+									<div class="icon">
+										<mat-icon>state</mat-icon>
+									</div>
+									<div class="value">RESERVADO</div>
+								</div> -->
+								<div class="box-action">
+									<button class="btn btn-rounded btn-default btn-sm accent" disabled type="button">CITA PAGADA</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-tab box-tab-cr" *ngIf="fTabContent.classCR">
+					<div class="box-periodo"> ENERO 2019 </div>
+					<div class="box-content-items">
+						<div class="box-item">
+							<div class="box-fecha">
+								<div class="box-content-fecha">
+									<p class="mes">Enero</p>
+									<p class="dia">28</p> 
+								</div>
+								<div class="timeline"></div>
+								<div class="box-end"></div>
+							</div>
+							<div class="box-detail">
+								<div class="box-nombre"> LUIS RICARDO LUNA SOTO | TITULAR </div>
+								<div class="box-detaiil-item box-hora">
+									<div class="icon"> <mat-icon>av_timer</mat-icon> </div>
+									<div class="value">09:45</div>
+								</div>
+								<div class="box-detaiil-item box-medico">
+									<div class="icon"> <mat-icon>person_pin</mat-icon> </div>
+									<div class="value">TOCE YAÑEZ LUIS MANUEL</div>
+								</div>
+								<div class="box-detaiil-item box-especialidad">
+									<div class="icon">
+										<mat-icon>book</mat-icon>
+									</div>
+									<div class="value">CARDIOLOGÍA</div>
+								</div>
+								<!-- <div class="box-detaiil-item box-status">
+									<div class="icon">
+										<mat-icon>state</mat-icon>
+									</div>
+									<div class="value">RESERVADO</div>
+								</div> -->
+								<div class="box-action">
+										<button class="btn btn-rounded btn-default btn-sm accent" disabled type="button">CITA PAGADA</button>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

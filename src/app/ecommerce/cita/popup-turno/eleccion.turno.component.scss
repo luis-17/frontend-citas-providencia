@@ -1,0 +1,27 @@
+.box-turnos{
+    min-height: 200px;
+}
+.box-eleccion .rb-turno {
+    width: auto;
+    margin: 8px;
+    padding: 10px 20px;
+    background-color: rgba(1, 87, 155, 0.09);
+    border-radius: 10px;
+    font-size: 16px;
+    color: #b1b1b1;
+}
+.box-eleccion .rb-turno.mat-radio-checked{
+    background-color: #21b8c6;
+    color: white;
+}
+.box-eleccion .rb-turno label{
+    margin: 0;
+}
+.box-turnos .box-action{
+    display: flex;
+    justify-content: center;
+    padding: 25px 20px 0;
+}
+.box-turnos .box-action button{
+    min-width: 200px;
+}
