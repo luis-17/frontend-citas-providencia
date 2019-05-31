@@ -10,9 +10,11 @@ export class TokenService {
   setToken(token: string): void {
     localStorage.setItem(TOKEN, token);
   }
-
+  // getToken(): void {
+  //   const token = localStorage.getItem(TOKEN);
+  //   console.log(token, 'tokenfdg');
+  // }
   isLogged() {
-    console.log(localStorage.getItem(TOKEN),'localStorage.getItem(TOKEN)');
     return localStorage.getItem(TOKEN) != null;
   }
 }

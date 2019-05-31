@@ -6,27 +6,171 @@
       </div>
     </div>
   </nav>
+  <app-ngx-notifier [className]="'notify-cp'" ></app-ngx-notifier>
+  <ngx-ui-loader bgsColor="#FFFFFF" fgsColor="#FFFFFF" overlayColor="rgba(255,255,255,.8)" logoUrl="./assets/img/loader-logo-1.gif"></ngx-ui-loader>
   <div class="container">
-    <div class="box-login">
+    <div class="box-login" *ngIf="fLogin.show">
       <div class="box-login-content">
         <h2> Portal del Paciente </h2>
-        <form class="box-inputs">
+        <form class="box-inputs" (ngSubmit)="formLogin.valid && iniciarSesion();" [formGroup]="formLogin">
           <div class="form-group">
             <mat-form-field class="item field-sm field-cp" appearance="outline">
               <mat-label>Nro de Documento</mat-label>
-              <input autocomplete="off" matInput type="text" placeholder="Nro de Documento" [(ngModel)]="fLogin.numDocumento" name="numDocumento">
+              <input autocomplete="off" matInput type="text" placeholder="Nro de Documento" formControlName="numDocumento" name="numDocumento">
+              <mat-error *ngIf="formAccount.get('numDocumento').errors?.required">Este campo es requerido</mat-error>
             </mat-form-field>
           </div>
           <div class="form-group">
             <mat-form-field class="item field-sm field-cp" appearance="outline">
               <mat-label>Clave</mat-label>
-              <input autocomplete="off" matInput type="password" placeholder="Clave" [(ngModel)]="fLogin.clave" name="clave">
+              <input autocomplete="off" matInput type="password" placeholder="Clave" formControlName="clave" name="clave">
+              <mat-error *ngIf="formAccount.get('clave').errors?.required">Este campo es requerido</mat-error>
             </mat-form-field>
           </div> 
-          <button class="btn-login" mat-raised-button color="primary" (click)="iniciarSesion();">INICIAR SESIÓN</button>
+          <button class="btn-login" mat-raised-button color="primary">INICIAR SESIÓN</button>
           <a [routerLink]="" (click)="olvidoClave();"> Olvidé mi clave </a>
         </form>
         <button mat-raised-button (click)="darDeAlta();">¿No tienes cuenta? ¡Regístrate Ahora!</button>
+      </div>
+    </div>
+    <div class="box-account" *ngIf="fAccount.show">
+      <div class="box-account-content">
+        <div class="box-header">
+          <button class="btn btn-sm btn-volver" (click)="volverALogin();" type="button">VOLVER</button>
+          <h2> Crea tu cuenta </h2>
+        </div>
+        <form class="box-inputs" (ngSubmit)="formAccount.valid && darDeAltaExec();" [formGroup]="formAccount" name="formAccount">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-label>Tipo de Documento </mat-label>
+                <mat-select placeholder="Tipo" formControlName="tipoDocumento" required>
+                  <mat-option *ngFor="let row of arrTipoDocumento" [value]="row">
+                      {{row.descripcion}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formAccount.get('tipoDocumento').errors?.required">Este campo es requerido</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group col-md-6">
+              <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-label>Nro de Documento</mat-label>
+                <input autocomplete="off" matInput type="text" placeholder="Nro de Documento" required formControlName="numDocumento" 
+                oninput="this.value = this.value.toUpperCase()">
+                <mat-error *ngIf="formAccount.get('numDocumento').errors?.required">Este campo es requerido</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group col-md-6">
+              <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-label>NOMBRES</mat-label>
+                <input matInput placeholder="NOMBRES" name="nombres" required 
+                  formControlName="nombres" oninput="this.value = this.value.toUpperCase();">
+                <mat-error *ngIf="formAccount.get('nombres').errors?.required">Este campo es requerido</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group col-md-6">
+              <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-label>APELLIDO PATERNO</mat-label>
+                <input matInput placeholder="APELLIDO PATERNO" name="ap_paterno" oninput="this.value = this.value.toUpperCase();" 
+                  formControlName="ap_paterno" required>
+                  <mat-error *ngIf="formAccount.get('ap_paterno').errors?.required">Este campo es requerido</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group col-md-6">
+              <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-label>APELLIDO MATERNO</mat-label>
+                <input matInput placeholder="APELLIDO MATERNO" required name="ap_materno" 
+                  formControlName="ap_materno" oninput="this.value = this.value.toUpperCase();">
+                  <mat-error *ngIf="formAccount.get('ap_materno').errors?.required">Este campo es requerido</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group col-md-6">
+              <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-label>CORREO</mat-label>
+                <input matInput placeholder="CORREO" name="correo" required 
+                  formControlName="correo" oninput="this.value = this.value.toUpperCase();">
+                <mat-error *ngIf="formAccount.get('correo').errors?.required">Este campo es requerido</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group col-md-6">
+              <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-label>CELULAR</mat-label>
+                <input matInput placeholder="CELULAR" name="celular" 
+                  formControlName="celular" oninput="this.value = this.value.toUpperCase();">
+                <mat-error *ngIf="formAccount.get('celular').errors?.required">Campo requerido</mat-error>
+                <mat-error *ngIf="formAccount.get('celular').errors?.digits">Campo sólo acepta dígitos</mat-error>
+                <mat-error *ngIf="formAccount.get('celular').errors?.rangeLength">Campo sólo acepta 9 dígitos</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group col-md-6">
+              <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-label>FECHA DE NACIMIENTO</mat-label>
+                <input matInput placeholder="FECHA DE NACIMIENTO" name="fecha_nac" 
+                  formControlName="fecha_nac" type="date">
+                <mat-error *ngIf="formAccount.get('fecha_nac').errors?.required">Este campo es requerido</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group col-md-6">
+              <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-label>SEXO</mat-label>
+                <mat-select name="sexo" placeholder="SEXO" formControlName="sexo" >
+                  <mat-option *ngFor="let row of arrSexo" [value]="row.id">
+                      {{row.nombre}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formAccount.get('sexo').errors?.required">Este campo es requerido</mat-error>
+              </mat-form-field>
+            </div> 
+            <div class="col-md-12 text-center">
+              <div class="box-separador">
+                <div class="line"></div>
+                <div class="text"> ACCESO </div>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-label>CLAVE</mat-label>
+                <input matInput placeholder="CLAVE" name="clave" type="password" formControlName="clave" required>
+                <mat-error *ngIf="formAccount.get('clave').errors?.required">Este campo es requerido</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group col-md-6">
+              <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-label>REPITA CLAVE</mat-label>
+                <input matInput placeholder="REPITA CLAVE" name="repita_clave" type="password" 
+                  formControlName="repita_clave" required>
+                <mat-error *ngIf="formAccount.get('repita_clave').errors?.equalTo">El valor no es igual a la clave</mat-error>
+              </mat-form-field>
+            </div>
+            <button class="btn-account" mat-raised-button color="primary" >CREAR CUENTA</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="box-recovery" *ngIf="fRecovery.show">
+      <div class="box-recovery-content">
+        <div class="box-header">
+          <button class="btn btn-sm btn-volver" (click)="volverALogin();" type="button">VOLVER</button>
+          <h2> Recuperación de Cuenta </h2>
+        </div>
+        <form class="box-inputs" (ngSubmit)="formRecovery.valid && recuperarCuentaExec();" [formGroup]="formRecovery" name="formRecovery">
+          <div class="row">
+            <div class="col-md-12">
+              <p class="label-info alert">
+                Para recuperar tu cuenta, deberás colocar tu Número de Documento de Identidad, y te enviaremos un correo a tu cuenta asociada. 
+                Deberás abrir tu bandeja y seguir las instrucciones indicadas.
+              </p>
+            </div>
+            <div class="form-group col-md-12">
+              <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-label>Nro de Documento</mat-label>
+                <input autocomplete="off" matInput type="text" placeholder="Nro de Documento" name="numDocumento" 
+                  oninput="this.value = this.value.toUpperCase()" formControlName="numDocumento" required>
+              </mat-form-field>
+            </div>
+            <button class="btn-recovery" mat-raised-button color="primary">RECUPERAR CUENTA</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

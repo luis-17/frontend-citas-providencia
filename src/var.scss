@@ -3,12 +3,12 @@
 
 $app-primary:       mat-palette($mat-light-blue, 900);
 $app-accent:        mat-palette($mat-green, 600);
-$app-warn:          mat-palette($mat-amber, 400);
+$app-warn:          mat-palette($mat-red, 400);
 $app-text-regular:  mat-palette($mat-blue-grey, 500);
 
 $primary: #003d71;
 $accent: #829723;
-$warn: #f4cc21;
+$warn: red;
 $suplem: #21b8c6;
 $text-regular: mat-color($app-text-regular);
 

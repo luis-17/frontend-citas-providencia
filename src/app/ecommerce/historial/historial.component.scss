@@ -24,10 +24,10 @@
 }
 .page.historial .box-tabs .box-tab-group .box-tab-item:first-child{
 	border-right: 1px solid;
-	border-radius: 15px 0 0 15px;
+	border-radius: 10px 0 0 0;
 }
 .page.historial .box-tabs .box-tab-group .box-tab-item:last-child{
-	border-radius: 0 15px 15px 0;
+	border-radius: 0 0 10px 0;
 }
 .page.historial .box-tabs .box-tab-group .box-tab-item.active{
 	opacity: 1;
@@ -108,4 +108,52 @@
     background-color: $suplem;
     position: absolute;
     bottom: 0;
+}
+@media only screen and (max-width: 960px){
+	.page.historial {
+		padding-top: 40px;
+		margin-right: 60px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.page.historial{
+		padding-top: 36px !important;
+	}
+	.page.historial .box-content-tabs{
+		width: 100%;
+	}
+	.page.historial .box-tabs .box-tab-group{
+		width: 100%;
+		font-size: 15px;
+	}
+	.page.historial .box-content-items .box-item .box-detail{
+		font-size: 15px;
+	}
+	.page.historial .box-content-items .box-item .box-detail .box-detaiil-item{
+		font-size: 14px;
+	}
+	.page.historial .box-content-items .box-item .box-detail .box-detaiil-item .icon{
+		height: 24px;
+	}
+	.page.historial .box-content-items .box-item .box-fecha{
+		width: 100px;
+		min-width: 100px;
+	}
+	.page.historial .box-end{
+		left: 39%;
+	}
+	.page.historial .box-content-items .box-item .box-fecha .box-content-fecha .dia{
+		font-size: 28px;
+	}
+	.page.historial .box-content-items .box-item .box-fecha .box-content-fecha .mes{
+		font-size: 15px;
+	}
+	.page.historial .box-content-items .box-item .box-fecha .box-content-fecha{
+		margin: 0 20px;
+		height: 62px;
+	}
+	.page.historial .box-detail .box-action button {
+    margin: 0 10px 10px 0;
+	}
 }

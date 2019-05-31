@@ -6,6 +6,7 @@
 }
 .login .box-header{
     margin: auto;
+    position: relative;
 }
 .login .box-header img{
     margin: 8px;
@@ -58,4 +59,94 @@
 }
 .login .box-login .box-login-content .mat-form-field{
     width: inherit;
+}
+// account 
+.login .box-account{
+    margin: auto;
+    padding: 6%;
+}
+.login .box-account .box-account-content{
+    width: 540px;
+    margin: auto;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+}
+.login .box-account .box-account-content h2{
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 28px;
+    text-align: center;
+    background-color: #fafafa;
+    color: $accent;
+}
+.login .box-account .box-account-content .box-inputs .row{
+    padding: 15px;
+}
+.login .box-account .box-account-content .box-inputs .row .mat-form-field{
+    display: block;
+    margin: auto;
+}
+.login .box-account .box-account-content .box-inputs .line{
+    height: 1px;
+    background-color: #e0e0e0;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    z-index: -1;
+}
+.login .box-account .box-account-content .box-inputs .form-group{
+    margin-bottom: 1rem;
+}
+.login .box-account .box-account-content .box-inputs .text{
+    display: inline;
+    padding: 6px 12px;
+    background-color: white;
+}
+.login .box-account .box-account-content .box-inputs .box-separador{
+    margin-bottom: 12px;
+    position: relative;
+}
+.login .box-account .box-account-content .box-inputs .btn-account{
+    margin: auto;
+    width: 280px;
+}
+.login .btn-volver{
+    position: absolute;
+    top: 10px;
+    width: auto;
+    margin-left: 15px;
+    border: 1px solid #e0e0e0;
+}
+
+// recovery 
+.login .box-recovery{
+    margin: auto;
+    padding: 6%;
+}
+.login .box-recovery .box-recovery-content{
+    width: 500px;
+    margin: auto;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+}
+.login .box-recovery .box-recovery-content h2{
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 28px;
+    text-align: center;
+    background-color: #fafafa;
+    color: $accent;
+}
+.login .box-recovery .box-recovery-content .box-inputs .row{
+    padding: 15px;
+}
+.login .box-recovery .box-recovery-content .box-inputs .row .mat-form-field{
+    display: block;
+    margin: auto;
+}
+.login .box-recovery .box-recovery-content .box-inputs .btn-recovery{
+    margin: auto;
+    width: 280px;
+}
+.login .box-recovery .box-recovery-content .box-inputs .label-info{
+    background-color: #f1f1f1;
 }

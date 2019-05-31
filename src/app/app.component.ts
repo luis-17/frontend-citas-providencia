@@ -13,7 +13,8 @@ export class AppComponent {
   
   arrInitConfig = {
     class: ' login',
-    login: true  
+    login: true,
+    urlImagePerfil: null,  
   };
   arrMenuToggle = { class: "", classIconMenu: "" }; 
   public ngOnInit(): void {
@@ -39,19 +40,18 @@ export class AppComponent {
           window.clearInterval(scrollToTop);
       }
     }, 16);
-    console.log(componentRef.page,'componentRef.page app');
-   //if( componentRef.page == 'login' ){
-      console.log(componentRef, 'componentReference');
-      // componentRef.anyFunction();
+    // setTimeout(function(){
+    try {
       componentRef.getInitConfig.subscribe((data) => {
-        console.log(this.arrInitConfig,'entraste 1');
+        console.log(this.arrInitConfig,'entraste  xdx');
         this.arrInitConfig.class = data.class; 
         this.arrInitConfig.login = data.login; 
-        console.log('entraste 2');
-        // this.arrInitConfig.class = ''; 
-        // this.arrInitConfig.login = false; 
       });
-    //}
-    
+    }
+    catch(error) {
+      console.log(error);
+    }
+      
+    // }, 1000);
   }
 }

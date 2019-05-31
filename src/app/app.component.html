@@ -1,4 +1,4 @@
-<app-header [arrInitConfig]="arrInitConfig" ></app-header>
+<app-header [arrInitConfig]="arrInitConfig" [ngClass]="arrInitConfig.class"></app-header>
 <div class="page" [ngClass]="arrInitConfig.class">
     <router-outlet (activate)="onActivate($event)"></router-outlet>
 </div>

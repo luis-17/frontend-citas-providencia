@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ObservableMedia, MediaChange} from '@angular/flex-layout';
 import { Router } from '@angular/router';
+import { PacienteService } from '../../services/paciente.services';
 
 @Component({
   selector: 'app-header',
@@ -8,29 +10,36 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   @Input() arrMenuToggle;
-  @Input() arrInitConfig; 
-  // @Output() getInitConfig: EventEmitter<any> = new EventEmitter();
+  @Input() arrInitConfig;
   arrParams = {};
+  fPerfil = {};
   constructor(
-    private router: Router
+    private router: Router,
+    private pacienteService: PacienteService,
+    private media: ObservableMedia
   ) { }
-  toggleMenu(){
-    this.arrMenuToggle.class = (this.arrMenuToggle.class == "menu-sm") ? "" : "menu-sm"; 
+  classToggle = 'semion';
+  onDesplegarMenu(){
+    this.classToggle = this.classToggle === 'semion' ? 'on': 'semion';
   }
   ngOnInit() {
-    // console.log(this.arrMenuToggle.class);
-    // console.log(this.arrInitConfig,'arrInitConfig desde header');
+    this.pacienteService.cargarPerfilGeneral().subscribe(
+      r => {
+        this.fPerfil = r.datos;
+      });
+    this.media.asObservable()
+      .subscribe((changes: MediaChange) => {
+        if( changes.mqAlias == 'sm' || changes.mqAlias == 'xs' ){
+          this.classToggle = 'semion';
+        }else{
+          this.classToggle = 'off';
+        }
+      });
   }
   onCerrarSesion(){
     this.arrInitConfig.login = true; 
-    this.arrInitConfig.class = ' login'; 
-    // this.arrParams = {
-    //   class: ' login',
-    //   login: true  
-    // }; 
-    // this.getInitConfig.emit(this.arrParams);
+    this.arrInitConfig.class = ' login';
     this.router.navigate(['login']);
     localStorage.removeItem('TOKEN');
-    // console.log(this.globals.arrInitConfig);
-  }
+  };
 }

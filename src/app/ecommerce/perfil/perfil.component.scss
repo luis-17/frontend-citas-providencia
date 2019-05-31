@@ -5,21 +5,29 @@
 .page.perfil .box-sidebar{
     padding-top: 64px;
     background-color: #f2f5f7;
+    width: 300px;
 }
 .page.perfil .box-foto{
     text-align: center;
     position: relative;
 }
-.page.perfil .box-foto a.link-foto{
+.page.perfil .box-foto .link-foto{
     border: 3px solid #829723;
     border-radius: 50%;
+    display: inline-block;
 }
-.page.perfil .box-foto a.link-foto > img{
+.page.perfil .box-foto .inputFoto{
+    position: absolute;
+    width: 30px;
+    bottom: 4px;
+    right: 85px;
+}
+.page.perfil .box-foto .link-foto > img{
     height: 110px;
     border-radius: 50%;
     width: 110px;
 }
-.page.perfil .box-foto a.popup-foto{
+.page.perfil .box-foto .popup-foto{
     position: absolute;
     bottom: 0;
     left: 60%;
@@ -32,7 +40,7 @@
     justify-content: center;
     height: 34px;
 }
-.page.perfil .box-foto a.popup-foto .mat-icon{
+.page.perfil .box-foto .popup-foto .mat-icon{
     font-size: 32px;
     display: flex;
     align-items: center;
@@ -70,6 +78,7 @@
 .page.perfil .box-content{
     padding-top: 3%;
     padding-left: 4%;
+    flex: 0.95;
 }
 .page.perfil .box-content .tab.show{
     display: block;
@@ -164,9 +173,42 @@
     background-color: $accent;
     align-items: center;
 }
+.page.perfil .box-content .box-list table td.action > a.btn-danger{
+    background-color: $warn;
+}
 .page.perfil .box-content .box-list table td.action > a > .mat-icon{
     font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media only screen and (max-width: 960px){
+	.page.perfil {
+		margin-right: 60px;
+    }
+    .page.perfil .box-sidebar{
+        width: 240px;
+    }
+    .page.perfil .box-content {
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+    .page.perfil .box-content .box-header h3{
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 660px){
+    .page.perfil .box-sidebar{
+        width: 100%;
+        min-width: 100%;
+        padding-top: 30px;
+    }
+    .page.perfil .box-info h3{
+        width: 92%;
+    }
+    .page.perfil .box-content-menu .box-item{
+        margin-left: 16px;
+    }
 }

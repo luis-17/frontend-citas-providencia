@@ -1,0 +1,15 @@
+[{
+    "id": 1,
+    "nombre": "DNI",
+    "descripcion": "DNI"
+},
+{
+    "id": 2,
+    "nombre": "CEX",
+    "descripcion": "CARNET DE EXTRANJERIA" 
+},
+{
+    "id": 3,
+    "nombre": "PAS",
+    "descripcion": "PASAPORTE" 
+}]

@@ -1,0 +1,96 @@
+<div class="mat-dialog-header">
+	<h1 class="mat-dialog-title" mat-dialog-title> Registro de Familiares </h1> 
+	<button mat-stroked-button (click)="onDialogClose()"> 
+			<mat-icon>close</mat-icon>
+	</button> 
+</div>
+<div class="mat-dialog-content" mat-dialog-content> 
+	<div class="box-familiares">
+		<form class="form row" (ngSubmit)="formFamiliar.valid && actualizarFamiliarExec();" [formGroup]="formFamiliar" name="formFamiliar">
+			<div class="form-group col-md-6">
+				<mat-form-field class="item field-sm field-cp" appearance="outline">
+					<mat-label>Tipo de Documento </mat-label>
+					<mat-select placeholder="Tipo" formControlName="tipoDocumento" required [compareWith]="tipoDocumentoCompare">
+						<mat-option *ngFor="let row of arrTipoDocumento" [value]="row.nombre">
+								{{row.descripcion}}
+						</mat-option>
+					</mat-select>
+					<mat-error *ngIf="formFamiliar.get('tipoDocumento').errors?.required">Este campo es requerido</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="form-group col-md-6">
+				<mat-form-field class="item field-sm field-cp" appearance="outline">
+					<mat-label>Nro de Documento</mat-label>
+					<input autocomplete="off" matInput type="text" placeholder="Nro de Documento" required formControlName="numDocumento" 
+					oninput="this.value = this.value.toUpperCase()">
+					<mat-error *ngIf="formFamiliar.get('numDocumento').errors?.required">Este campo es requerido</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="form-group col-md-6">
+				<mat-form-field class="item field-sm field-cp" appearance="outline">
+					<mat-label> Parentesco </mat-label>
+					<mat-select placeholder="Tipo" formControlName="parentesco" required [compareWith]="parentescoCompare">
+						<mat-option *ngFor="let row of arrParentesco" [value]="row.idparentesco">
+								{{row.descripcion_par}}
+						</mat-option>
+					</mat-select>
+					<mat-error *ngIf="formFamiliar.get('parentesco').errors?.required">Este campo es requerido</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="form-group col-md-6">
+				<mat-form-field class="item field-sm field-cp" appearance="outline">
+					<mat-label>NOMBRES</mat-label>
+					<input matInput placeholder="NOMBRES" name="nombres" required 
+						formControlName="nombres" oninput="this.value = this.value.toUpperCase();">
+					<mat-error *ngIf="formFamiliar.get('nombres').errors?.required">Este campo es requerido</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="form-group col-md-6">
+				<mat-form-field class="item field-sm field-cp" appearance="outline">
+					<mat-label>APELLIDO PATERNO</mat-label>
+					<input matInput placeholder="APELLIDO PATERNO" name="ap_paterno" oninput="this.value = this.value.toUpperCase();" 
+						formControlName="ap_paterno" required>
+						<mat-error *ngIf="formFamiliar.get('ap_paterno').errors?.required">Este campo es requerido</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="form-group col-md-6">
+				<mat-form-field class="item field-sm field-cp" appearance="outline">
+					<mat-label>APELLIDO MATERNO</mat-label>
+					<input matInput placeholder="APELLIDO MATERNO" required name="ap_materno" 
+						formControlName="ap_materno" oninput="this.value = this.value.toUpperCase();">
+						<mat-error *ngIf="formFamiliar.get('ap_materno').errors?.required">Este campo es requerido</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="form-group col-md-6">
+				<mat-form-field class="item field-sm field-cp" appearance="outline">
+					<mat-label>CORREO</mat-label>
+					<input matInput placeholder="CORREO" name="correo" required 
+						formControlName="correo" oninput="this.value = this.value.toUpperCase();">
+					<mat-error *ngIf="formFamiliar.get('correo').errors?.required">Este campo es requerido</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="form-group col-md-6">
+				<mat-form-field class="item field-sm field-cp" appearance="outline">
+					<mat-label>FECHA DE NACIMIENTO</mat-label>
+					<input matInput placeholder="FECHA DE NACIMIENTO" name="fecha_nac" 
+						formControlName="fecha_nac" type="date">
+					<mat-error *ngIf="formFamiliar.get('fecha_nac').errors?.required">Este campo es requerido</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="form-group col-md-6">
+				<mat-form-field class="item field-sm field-cp" appearance="outline">
+					<mat-label>SEXO</mat-label>
+					<mat-select name="sexo" placeholder="SEXO" formControlName="sexo" >
+						<mat-option *ngFor="let row of arrSexo" [value]="row.id">
+								{{row.nombre}}
+						</mat-option>
+					</mat-select>
+					<mat-error *ngIf="formFamiliar.get('sexo').errors?.required">Este campo es requerido</mat-error>
+				</mat-form-field>
+			</div>
+			<div class="form-group col-md-12 text-center">
+				<button class="btn-account" mat-raised-button color="primary" >PROCESAR</button>
+			</div>
+		</form>
+	</div>
+</div>

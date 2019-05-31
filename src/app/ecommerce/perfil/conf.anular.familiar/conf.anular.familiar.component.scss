@@ -1,0 +1,16 @@
+@import 'src/var.scss';
+.box-confirmacion .box-info{
+    font-size: 26px;
+    text-align: center;
+    color: $primary;
+    font-weight: 700;
+}
+.box-confirmacion .box-action{
+    text-align: center;
+    margin: 20px 0;
+    
+}
+.box-confirmacion .box-action button{
+    width: 80px;
+    margin: 0 10px 0 0;
+}

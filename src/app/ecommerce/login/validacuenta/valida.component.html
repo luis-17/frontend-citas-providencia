@@ -1,0 +1,29 @@
+<div class="page valida">
+	<nav class="navbar">
+		<div class="container-fluid">
+			<div class="box-header">
+				<img src="./assets/img/logo-white.png" />
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="box-valida">
+			<div class="box-valida-content">
+				<h2> Validación de cuenta </h2>
+				<div class="box">
+					<div class="box-info-success" *ngIf="fValida.infoSuccess">
+						<p>
+							{{ fValida.message }}
+						</p>
+					</div>
+					<div class="box-info-danger" *ngIf="fValida.infoDanger">
+							{{ fValida.message }} 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="box-home">
+			<a class="box-link-home" [routerLink]="['/']"> <mat-icon>home</mat-icon> IR AL INICIO </a>
+		</div>
+	</div>
+</div>

@@ -1,13 +1,18 @@
+<app-ngx-notifier [className]="'notify-cp'" ></app-ngx-notifier>
+<ngx-ui-loader bgsColor="#FFFFFF" fgsColor="#FFFFFF" overlayColor="rgba(255,255,255,.8)" logoUrl="./assets/img/loader-logo-1.gif"></ngx-ui-loader>
 <div class="page perfil">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-auto box-sidebar">
+      <div class="box-sidebar">
         <div class="box-content-foto">
           <div class="box-foto">
             <a class="link-foto" [routerLink]="">
-              <img src="./assets/img/default.jpg" />
+              <img src="{{fPerfil.urlFile}}" />
             </a>
-            <a class="popup-foto" [routerLink]="" matTooltip="Subir foto"> <mat-icon>camera</mat-icon></a>
+            <a class="popup-foto" matTooltip="Subir foto" [routerLink]="" (click)="fotoPerfil.click()">
+              <mat-icon>camera</mat-icon>
+            </a>
+            <input class="inputFoto" #fotoPerfil id="foto" hidden name="photo" type="file" (change)="onFileChange($event)" />
           </div>
           <div class="box-info">
             <h3>¡Bienvenido Luis Ricardo!</h3>
@@ -34,81 +39,78 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-9 box-content">
+      <div class="box-content">
         <div class="tab tab-personales" *ngIf="fTabContent.classDP">
           <div class="box-header">
             <h3> Edita tu información personal </h3>
           </div>
           <div class="box-form">
-            <form class="form row">
+            <form class="form row" (ngSubmit)="formEditPerfil.valid && actualizarPerfilExec();" [formGroup]="formEditPerfil" name="formEditPerfil">
               <div class="form-group col-md-6">
-                <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-form-field class="item field-sm field-cp readonly-wrapper" appearance="outline">
                   <mat-label>NOMBRES</mat-label>
-                  <input matInput placeholder="NOMBRES" name="nombres" value="LUIS RICARDO">
+                  <input formControlName="nombres" matInput placeholder="NOMBRES" [readonly]="true">
                 </mat-form-field>
               </div>
               <div class="form-group col-md-6">
-                <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-form-field class="item field-sm field-cp readonly-wrapper" appearance="outline">
                   <mat-label>APELLIDO PATERNO</mat-label>
-                  <input matInput placeholder="APELLIDO PATERNO" name="ap_paterno" value="LUNA">
+                  <input formControlName="apellido_paterno" matInput placeholder="APELLIDO PATERNO" name="ap_paterno" [readonly]="true">
                 </mat-form-field>
               </div>
               <div class="form-group col-md-6">
-                <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-form-field class="item field-sm field-cp readonly-wrapper" appearance="outline">
                   <mat-label>APELLIDO MATERNO</mat-label>
-                  <input matInput placeholder="APELLIDO MATERNO" name="ap_materno" value="SOTO">
+                  <input formControlName="apellido_materno" matInput placeholder="APELLIDO MATERNO" name="ap_materno" [readonly]="true">
                 </mat-form-field>
               </div>
               <div class="form-group col-md-6">
                 <mat-form-field class="item field-sm field-cp" appearance="outline">
                   <mat-label>CORREO</mat-label>
-                  <input matInput placeholder="CORREO" name="correo" value="LUISLS1717@GMAIL.COM">
+                  <input formControlName="correo" matInput placeholder="CORREO" name="correo">
                 </mat-form-field>
               </div>
               <div class="form-group col-md-6">
                 <mat-form-field class="item field-sm field-cp" appearance="outline">
-                  <mat-label>TELÉFONO</mat-label>
-                  <input matInput placeholder="TELÉFONO" name="telefono" value="992566985">
+                  <mat-label>CELULAR</mat-label>
+                  <input matInput placeholder="CELULAR" name="telefono"  formControlName="telefono">
                 </mat-form-field>
               </div>
               <h4 class="col-md-12">Datos Adicionales </h4>
               <div class="form-group col-md-6">
-                <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-form-field class="item field-sm field-cp readonly-wrapper" appearance="outline">
                   <mat-label>Tipo de Documento</mat-label>
-                  <mat-select placeholder="TIPO DE DOCUMENTO"
-                      [(ngModel)]="fData.fPersonal.tipoDocumento" [ngModelOptions]="{standalone: true}">
-                      <mat-option *ngFor="let row of arrTipoDocumento" [value]="row.id">
-                          {{row.tipo_documento}}
+                  <mat-select formControlName="tipo_documento" placeholder="TIPO DE DOCUMENTO" [compareWith]="tipoDocumentoCompare" [readonly]="true">
+                      <mat-option *ngFor="let row of arrTipoDocumento" [value]="row" [ngValue]="row">
+                          {{row.descripcion}}
                       </mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
               <div class="form-group col-md-6">
-                <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-form-field class="item field-sm field-cp readonly-wrapper" appearance="outline">
                   <mat-label>NÚMERO DE DOCUMENTO</mat-label>
-                  <input matInput placeholder="NÚMERO DE DOCUMENTO" name="" value="47866486">
-                  <!-- <input matInput placeholder="TELÉFONO" name="telefono" value="992566985"> -->
+                  <input formControlName="numero_documento" matInput placeholder="NÚMERO DE DOCUMENTO" [readonly]="true">
                 </mat-form-field>
               </div>
               <div class="form-group col-md-6">
-                <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-form-field class="item field-sm field-cp readonly-wrapper" appearance="outline">
                   <mat-label> GÉNERO </mat-label>
-                  <mat-select placeholder="Género"
-                      [(ngModel)]="fData.fPersonal.genero" [ngModelOptions]="{standalone: true}">
-                      <mat-option *ngFor="let row of arrGenero" [value]="row.id">
-                          {{row.genero}}
+                  <mat-select placeholder="Género" formControlName="sexo" [readonly]="true">
+                      <mat-option *ngFor="let row of arrSexo" [value]="row.id">
+                          {{row.nombre}}
                       </mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
               <div class="form-group col-md-6">
-                <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-form-field class="item field-sm field-cp readonly-wrapper" appearance="outline">
                   <mat-label>FECHA DE NACIMIENTO</mat-label>
-                  <input matInput placeholder="FECHA DE NACIMIENTO" name="" value="04/04/1993">
+                  <input formControlName="fecha_nacimiento" matInput placeholder="FECHA DE NACIMIENTO" [readonly]="true">
                 </mat-form-field>
               </div>
               <div class="box-action col-md-12">
-                <button class="btn btn-rounded primary" (click)="actualizarDatos();">ACTUALIZAR DATOS</button> 
+                <button class="btn btn-rounded primary">ACTUALIZAR DATOS</button> 
               </div>
             </form>
           </div>
@@ -123,91 +125,90 @@
                 <img src="./assets/img/perfil/peso.png" alt="Peso" />
                 <div class="box-item-rpta">
                   <span class="pre-valor">PESO</span>
-                  <span class="valor"> 80 </span> <span class="post-valor">Kg.</span>
+                  <span class="valor"> {{ fPerfil.lectura.peso }} </span> <span class="post-valor">Kg.</span>
                 </div> 
               </div>
               <div class="box-item">
                 <img src="./assets/img/perfil/talla.png" alt="Estatura" />
                 <div class="box-item-rpta">
                   <span class="pre-valor">ESTATURA</span>
-                  <span class="valor">1.70 </span> <span class="post-valor">Mt.</span>
+                  <span class="valor"> {{ fPerfil.lectura.estatura }} </span> <span class="post-valor">Mt.</span>
                 </div> 
               </div>
               <div class="box-item">
                 <img src="./assets/img/perfil/imc.png" alt="IMC" />
                 <div class="box-item-rpta">
                   <span class="pre-valor">IMC</span>
-                  <span class="valor">27.68</span>
+                  <span class="valor">{{ fPerfil.lectura.imc }}</span>
                 </div>
               </div>
               <div class="box-item">
                 <img src="./assets/img/perfil/sangre.png" alt="Tipo de Sangre" />
                 <div class="box-item-rpta">
                   <span class="pre-valor">TIPO DE SANGRE</span>
-                  <span class="valor">B</span> <span class="post-valor"> + </span>
+                  <span class="valor">{{ fPerfil.lectura.tipo_sangre }}</span>
                 </div> 
               </div>
               <div class="box-item">
                 <img src="./assets/img/perfil/sexo.png" alt="Sexo" />
                 <div class="box-item-rpta">
-                  <span class="pre-valor">SEXO</span>
-                  <span class="valor">M</span>
+                  <span class="pre-valor">GÉNERO</span>
+                  <span class="valor"> {{ fPerfil.personal.sexo }} </span>
                 </div>
               </div>
               <div class="box-item">
                 <img src="./assets/img/perfil/edad.png" alt="Edad" />
                 <div class="box-item-rpta">
                   <span class="pre-valor">EDAD</span>
-                  <span class="valor">25</span> <span class="post-valor"> AÑOS </span>
+                  <span class="valor">{{ fPerfil.lectura.edad }}</span> <span class="post-valor"> AÑOS </span>
                 </div> 
               </div>
             </div>
           </div>
           <div class="box-form">
-            <form class="form row">
-              <div class="form-group col-md-6">
+            <form class="form row" (ngSubmit)="formEditClinico.valid && actualizarPerfilExec();" [formGroup]="formEditClinico" name="formEditClinico">
+              <!-- <div class="form-group col-md-6">
                 <mat-form-field class="item field-sm field-cp" appearance="outline">
                   <mat-label>CORREO</mat-label>
-                  <input matInput placeholder="CORREO" name="correo" value="LUISLS1717@GMAIL.COM">
+                  <input matInput placeholder="CORREO" name="correo" formControlName="correo">
+                </mat-form-field>
+              </div> -->
+              <div class="form-group col-md-6">
+                <mat-form-field class="item field-sm field-cp" appearance="outline">
+                  <mat-label>PESO (en kg.)</mat-label>
+                  <input matInput placeholder="PESO" name="peso" formControlName="peso">
                 </mat-form-field>
               </div>
               <div class="form-group col-md-6">
                 <mat-form-field class="item field-sm field-cp" appearance="outline">
-                  <mat-label>PESO</mat-label>
-                  <input matInput placeholder="PESO" name="peso" value="82">
-                </mat-form-field>
-              </div>
-              <div class="form-group col-md-6">
-                <mat-form-field class="item field-sm field-cp" appearance="outline">
-                  <mat-label> ESTATURA </mat-label>
-                  <input matInput placeholder="ESTATURA" name="estatura" value="1.76">
+                  <mat-label> ESTATURA (en cm.)</mat-label>
+                  <input matInput placeholder="ESTATURA" name="estatura" formControlName="estatura">
                 </mat-form-field>
               </div>
               <div class="form-group col-md-6">
                 <mat-form-field class="item field-sm field-cp" appearance="outline">
                   <mat-label>TIPO DE SANGRE</mat-label>
-                  <input matInput placeholder="TIPO DE SANGRE" name="tipo_sangre" value="O+">
+                  <input matInput placeholder="TIPO DE SANGRE" name="tipo_sangre" formControlName="tipo_sangre">
                 </mat-form-field>
               </div>
               <div class="form-group col-md-6">
-                <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-form-field class="item field-sm field-cp readonly-wrapper" appearance="outline">
                   <mat-label>EDAD</mat-label>
-                  <input matInput placeholder="EDAD" name="edad" value="25">
+                  <input matInput placeholder="EDAD" name="edad" [readonly]="true" formControlName="edad">
                 </mat-form-field>
               </div>
               <div class="form-group col-md-6">
-                <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-form-field class="item field-sm field-cp readonly-wrapper" appearance="outline">
                   <mat-label> GÉNERO </mat-label>
-                  <mat-select placeholder="Género"
-                      [(ngModel)]="fData.fPersonal.genero" [ngModelOptions]="{standalone: true}">
-                    <mat-option *ngFor="let row of arrGenero" [value]="row.id">
-                        {{row.genero}}
+                  <mat-select placeholder="Género" [readonly]="true" formControlName="sexo">
+                    <mat-option *ngFor="let row of arrSexo" [value]="row.id">
+                        {{row.nombre}}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
               <div class="box-action col-md-12">
-                <button class="btn primary btn-rounded" (click)="actualizarDatos();">ACTUALIZAR DATOS</button> 
+                <button class="btn primary btn-rounded">ACTUALIZAR DATOS</button> 
               </div>
             </form>
           </div>
@@ -217,7 +218,7 @@
             <h3> Gestionar familiares </h3>
           </div>
           <div class="box-list">
-            <button class="btn btn-rounded primary" (click)="agregarFamiliar();">AGREGAR FAMILIAR</button> 
+            <button class="btn btn-rounded primary" (click)="openDialogFamiliar({},'reg');">AGREGAR FAMILIAR</button> 
             <table class="table table-condensed table-hover">
               <thead>
                 <tr>
@@ -228,25 +229,15 @@
                   <th> ACCIÓN </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody *ngFor="let row of arrFamiliares">
                 <tr>
-                  <td> 08962632 </td>
-                  <td> MARCIAL YSABELINO </td>
-                  <td> PADRE </td>
-                  <td> 04/05/1969 </td>
+                  <td> {{ row.numero_documento }} </td>
+                  <td> {{ row.nombre_completo }} </td>
+                  <td> {{ row.descripcion_par }} </td>
+                  <td> {{ row.fecha_nacimiento }} </td>
                   <td class="action">
-                    <a class="btn" matTooltip="Editar" (click)="editarFamiliar();" [routerLink]=""><mat-icon>edit</mat-icon></a>
-                    <a class="btn" matTooltip="Quitar" (click)="anularFamiliar();" [routerLink]=""><mat-icon>delete</mat-icon></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td> 09740510 </td>
-                  <td> ROSA YSABEL </td>
-                  <td> MADRE </td>
-                  <td> 24/09/1972 </td>
-                  <td class="action">
-                    <a class="btn" matTooltip="Editar" (click)="editarFamiliar();" [routerLink]=""><mat-icon>edit</mat-icon></a>
-                    <a class="btn" matTooltip="Quitar" (click)="anularFamiliar();" [routerLink]=""><mat-icon>delete</mat-icon></a>
+                    <a class="btn" matTooltip="Editar" (click)="openDialogFamiliar(row,'edit');" [routerLink]=""><mat-icon>edit</mat-icon></a>
+                    <a class="btn btn-danger" matTooltip="Quitar" (click)="openConfirmAnularFamiliar(row.idcliente);" [routerLink]=""><mat-icon>delete</mat-icon></a>
                   </td>
                 </tr>
               </tbody>

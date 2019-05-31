@@ -1,7 +1,12 @@
 <nav class="navbar" *ngIf="!(arrInitConfig.login)">
   <div class="container-fluid">
     <div class="navbar-content">
-      <div class="box-logo">
+      <!-- <div class="box-logo">
+        <div class="box-content-logo">
+          <img src="./assets/img/logo.png" />
+        </div>
+      </div> -->
+      <div class="box-logo-movil">
         <div class="box-content-logo">
           <img src="./assets/img/logo.png" />
         </div>
@@ -19,10 +24,10 @@
           </li>
         </ul>
       </div>
-      <div class="box-perfil">
+      <div class="box-perfil {{classToggle}} ">
         <div class="box-perfil-content">
           <div class="box-photo">
-            <a [routerLink]="['/perfil-de-paciente']">
+            <a [routerLink]="['/perfil-de-paciente']" matTooltip="{{fPerfil.nombres}} {{fPerfil.apellido_paterno}}" >
               <img src="./assets/img/default.jpg"/>
             </a>
           </div>
@@ -31,7 +36,7 @@
               Bienvenido 
             </div>
             <div class="box-info-nickname">
-              LUIS RICARDO LUNA 
+              {{fPerfil.nombres}} {{fPerfil.apellido_paterno}}
             </div>
           </div>
           <div class="logout">
@@ -39,8 +44,61 @@
               <img src="./assets/img/icons/shutdown.png" />
             </a>
           </div>
+          <div class="box-icon-menu-sm">
+            <a class="menu-responsive" [routerLink]="" (click)="onDesplegarMenu();" matTooltip="Ver menú">
+              <mat-icon>dehaze</mat-icon>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </nav>
+<section class="box-menu-mobile {{classToggle}}">
+  <div class="menu-content">
+    <div class="otras-opciones">
+      <div class="box-icon-menu-sm">
+        <a class="menu-responsive" [routerLink]="['/perfil-de-paciente']" matTooltip="{{fPerfil.nombres}} {{fPerfil.apellido_paterno}}" >
+          <mat-icon>person</mat-icon>
+        </a>
+      </div>
+      <div class="box-icon-menu-sm">
+        <a class="menu-responsive" [routerLink]="" (click)="onDesplegarMenu();" matTooltip="Ocultar menú">
+          <mat-icon>menu</mat-icon>
+        </a>
+      </div>
+    </div>
+    <div class="nav-heading box-mp">
+      <h3 class="box-label-mp"> OPCIONES </h3>
+    </div>
+    <div class="items">
+      <ul class="nav nav-sidebar pb-n">
+        <li class="item home"> 
+          <a [routerLink]="['/home']" href="home" routerLinkActive="active">
+            <mat-icon>home</mat-icon>
+            <span class="nav-text">INICIO</span>
+          </a>
+        </li>
+        <li class="item bandeja">
+          <a [routerLink]="['/agendar-cita']" href="agendar" routerLinkActive="active">
+            <mat-icon>calendar_today</mat-icon>
+            <span class="nav-text">AGENDAR CITA</span>
+          </a>
+        </li>
+        <li class="item bandeja">
+          <a [routerLink]="['/historial-citas']"  href="historial"  routerLinkActive="active">
+            <mat-icon>create_new_folder</mat-icon>
+            <span class="nav-text">HISTORIAL</span>
+          </a>
+        </li>
+        <li class="item bandeja">
+          <a [routerLink]="" (click)="onCerrarSesion()">
+              <mat-icon>power_settings_new</mat-icon>
+            <span class="nav-text">CERRAR SESIÓN</span>
+          </a>
+        </li>
+      </ul> 
+    </div>
+    <div class="post-logo-content"></div>
+  </div>
+</section>

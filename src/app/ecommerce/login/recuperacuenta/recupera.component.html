@@ -1,0 +1,46 @@
+<div class="page recupera">
+  <nav class="navbar">
+    <div class="container-fluid">
+      <div class="box-header">
+        <img src="./assets/img/logo-white.png" />
+      </div>
+    </div>
+  </nav>
+  <app-ngx-notifier [className]="'notify-cp'" ></app-ngx-notifier>
+  <ngx-ui-loader bgsColor="#FFFFFF" fgsColor="#FFFFFF" overlayColor="rgba(255,255,255,.8)" logoUrl="./assets/img/loader-logo-1.gif"></ngx-ui-loader>
+  <div class="container">
+    <div class="box-recupera">
+      <div class="box-recupera-content">
+        <h2> Recuperación de cuenta </h2>
+        <form class="box-inputs" (ngSubmit)="formUpdatePass.valid && actualizarClaveExec();" [formGroup]="formUpdatePass" name="formUpdatePass">
+          <div class="row">
+            <div class="col-md-12">
+              <p class="label-info alert">
+                Solo te falta el último paso. Para recuperar tu cuenta, deberás colocar una nueva clave de acceso.
+              </p>
+            </div>
+            <div class="form-group col-md-12">
+              <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-label>CLAVE</mat-label>
+                <input matInput placeholder="CLAVE" name="clave" type="password" formControlName="clave" required>
+                <mat-error *ngIf="formUpdatePass.get('clave').errors?.required">Este campo es requerido</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-group col-md-12">
+              <mat-form-field class="item field-sm field-cp" appearance="outline">
+                <mat-label>REPITA CLAVE</mat-label>
+                <input matInput placeholder="REPITA CLAVE" name="repita_clave" type="password" 
+                  formControlName="repita_clave" required>
+                <mat-error *ngIf="formUpdatePass.get('repita_clave').errors?.equalTo">El valor no es igual a la clave</mat-error>
+              </mat-form-field>
+            </div>
+            <button class="btn-recovery" mat-raised-button color="primary">ACEPTAR</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="box-home">
+      <a class="box-link-home" [routerLink]="['/']"> <mat-icon>home</mat-icon> IR AL INICIO </a>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { NgxNotifierService } from 'ngx-notifier';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ConfAnularCitaComponent } from "../historial/conf.anular.cita/conf.anular.cita.component";
+import { CitaService } from '../../services/cita.services';
 @Component({
   selector: 'app-historial',
   templateUrl: './historial.component.html',
@@ -8,8 +11,13 @@ import { ConfAnularCitaComponent } from "../historial/conf.anular.cita/conf.anul
 })
 export class HistorialComponent implements OnInit {
   @Output() getInitConfig: EventEmitter<any> = new EventEmitter();
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private citaService: CitaService,
+  ) { }
   page = 'historial';
+  arrCitasPendientes = [];
+  arrCitasRealizadas = [];
   fTab = {
     classCP: ' active',
     classCR: '',
@@ -18,13 +26,16 @@ export class HistorialComponent implements OnInit {
     classCP: true,
     classCR: false,
   };
-  openConfirmAnularCita(){
+  openConfirmAnularCita(params){
     const dialogRef = this.dialog.open(ConfAnularCitaComponent, {
       width: '640px',
+      data: {
+        idcita: params,
+      }
     }); 
     dialogRef.afterClosed().subscribe(() => {
-      // this.fEmpl.fullname = localStorage.getItem('fullname');
-      // this.fEmpl.id = localStorage.getItem('id');
+      this.cargarCitasPendientes();
+      this.cargarCitasRealizadas();
     }); 
   }
   onTabMe(destino) {
@@ -45,6 +56,19 @@ export class HistorialComponent implements OnInit {
     this.getInitConfig.emit({ class: '', login: false });
   }
   ngOnInit() {
+    this.cargarCitasPendientes();
+    this.cargarCitasRealizadas();
   }
-
+  cargarCitasPendientes() {
+    this.citaService.listarCitasPendientes().subscribe(
+      r => {
+        this.arrCitasPendientes = r.datos;
+      });
+  }
+  cargarCitasRealizadas() {
+    this.citaService.listarCitasRealizadas().subscribe(
+      r => {
+        this.arrCitasRealizadas = r.datos;
+      });
+  }
 }

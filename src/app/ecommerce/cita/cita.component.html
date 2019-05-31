@@ -1,57 +1,55 @@
 <div class="page cita">
   <div class="container">
     <div class="row">
-      <section class="box-filtros">
-        <h4> <strong> PASO 1: </strong> Seleccione Filtros </h4>
-        <div class="form-group">
-          <mat-form-field class="item field-sm field-cp" appearance="outline">
-            <mat-label>LA CITA ES PARA:</mat-label>
-            <mat-select  placeholder="LA CITA ES PARA:"
-                [(ngModel)]="fData.paciente" [ngModelOptions]="{standalone: true}">
-                <mat-option *ngFor="let row of arrPaciente" [value]="row.id">
+      <section class="box-filtros section-active">
+        <form (ngSubmit)="formCitaPaciente.valid && procesarPaso1Exec();" [formGroup]="formCitaPaciente" name="formCitaPaciente">
+          <h4> <strong> PASO 1: </strong> Seleccione Filtros </h4>
+          <div class="form-group">
+            <mat-form-field class="item field-sm field-cp" appearance="outline">
+              <mat-label>LA CITA ES PARA: </mat-label>
+              <mat-select  placeholder="LA CITA ES PARA:" formControlName="paciente">
+                <mat-option *ngFor="let row of arrPacientes" [value]="row.id" required [disabled]="!row.habilitado">
                     {{row.paciente}}
                 </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field class="item field-sm field-cp" appearance="outline">
-            <mat-label>SELECCIONE LA ESPECIALIDAD</mat-label>
-            <mat-select  placeholder="ESPECIALIDAD"
-                [(ngModel)]="fData.especialidad" [ngModelOptions]="{standalone: true}">
-                <mat-option *ngFor="let row of arrEspecialidad" [value]="row.id">
-                    {{row.especialidad}}
-                </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-            <mat-form-field class="item field-sm field-cp" appearance="outline">
-              <mat-label>SELECCIONE MÉDICO</mat-label>
-              <mat-select  placeholder="MÉDICO"
-                  [(ngModel)]="fData.medico" [ngModelOptions]="{standalone: true}">
-                  <mat-option *ngFor="let row of arrMedico" [value]="row.id">
-                      {{row.medico}}
-                  </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
-        <div class="form-group">
-          <mat-form-field class="item field-sm field-cp" appearance="outline">
-            <mat-label>SELECCIONE GARANTE</mat-label>
-            <mat-select  placeholder="GARANTE"
-                [(ngModel)]="fData.garante" [ngModelOptions]="{standalone: true}">
-                <mat-option *ngFor="let row of arrGarante" [value]="row.garante">
+          <div class="form-group">
+            <mat-form-field class="item field-sm field-cp" appearance="outline">
+              <mat-label>SELECCIONE LA ESPECIALIDAD</mat-label>
+              <mat-select  placeholder="ESPECIALIDAD" formControlName="especialidad" required>
+                <mat-option *ngFor="let row of arrEspecialidad" [value]="row.id">
+                    {{row.especialidad}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="item field-sm field-cp" appearance="outline">
+              <mat-label>SELECCIONE MÉDICO</mat-label>
+              <mat-select placeholder="MÉDICO" formControlName="medico" required>
+                <mat-option *ngFor="let row of arrMedico" [value]="row.id">
+                  {{row.medico}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="item field-sm field-cp" appearance="outline">
+              <mat-label>SELECCIONE GARANTE</mat-label>
+              <mat-select placeholder="GARANTE" formControlName="garante" required>
+                <mat-option *ngFor="let row of arrGarante" [value]="row.id">
                     {{row.garante}}
                 </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="box-action">
-            <button class="btn primary" mat-raised-button color="primary" (click)="procesarCita();">PROCESAR</button> 
-        </div>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="box-action">
+            <button class="btn primary" mat-raised-button color="primary">PROCESAR</button> 
+          </div>
+        </form>
       </section>
-      <section class="box-calendario">
+      <section class="box-calendario section-inactive">
         <h4> <strong> PASO 2: </strong> Elija su Turno </h4>
         <div class="box-content-calendario">
           <div class="box-title-mes">
@@ -129,7 +127,7 @@
           </div>
         </div>
       </section>
-      <section class="box-confirmacion">
+      <section class="box-confirmacion section-inactive">
         <h4> <strong> PASO 3: </strong> Confirmación </h4>
         <div class="box-resumen">
           <div class="box-group">

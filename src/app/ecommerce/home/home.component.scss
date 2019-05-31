@@ -3,7 +3,7 @@
 .page.home .box-bienvenida .box-principal{
     flex: 2.5;
     // background-image: url('/assets/img/home.jpg'); 
-    background-image: url('http://104.131.176.122/ecommerce-dev/assets/img/home.jpg'); 
+    background-image: url('/assets/img/home.jpg'); 
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -200,3 +200,92 @@
 // .page.home .box-acciones .box-btn button.accent{
 //     background-color: $accent;
 // }
+/* Large devices (laptops/desktops, 992px and up) LG */
+@media only screen and (max-width: 1200px) {
+  .page.home .box-bienvenida .box-principal .box-principal-content{
+    padding-left: 10px;
+  }
+  .page.home .box-bienvenida .box-principal h3{
+    font-size: 25px;
+  }
+  .page.home .box-bienvenida .box-principal .box-cuerpo {
+    font-size: 18px;
+	}
+	.page.home .box-perfil-paciente .box-perfil img{
+		height: 40px;
+	}
+	.page.home .box-perfil-paciente .box-perfil .box-item-rpta .valor {
+		font-size: 26px;
+	}
+}
+@media only screen and (max-width: 960px) {
+	.page.home {
+        padding-top: 40px;
+        margin-right: 60px;
+	}
+	.page.home .box-bienvenida .box-principal{
+        border-radius: 10px 0 10px 0;
+        margin-bottom: 10px;
+	}
+	.page.home .box-bienvenida .box-principal::before{
+		border-radius: 10px 0 10px 0;
+	}
+	.page.home .box-bienvenida .box-bienvenida-content{
+		flex-wrap: wrap;
+	}
+	.page.home .box-bienvenida .box-principal{
+		width: 100%;
+		flex: unset;
+		height: 175px;
+	}
+	.page.home .box-bienvenida .box-item{
+		flex: unset;
+		width: 100%;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+        border-radius: 10px 0 10px 0;
+	}
+	// .page.home .box-bienvenida .box-historico{
+	// 	border-radius: 0 0 6px 6px;
+	// }
+	.page.home .box-bienvenida .box-principal h3 {
+    font-size: 30px;
+	}
+	.page.home .box-bienvenida .box-principal .box-cuerpo {
+    font-size: 20px;
+	}
+	.page.home .box-perfil-paciente h2{
+		font-size: 22px;
+	}
+	.page.home .box-perfil-paciente .box-perfil{
+		flex-wrap: wrap;
+	}
+	.page.home .box-perfil-paciente .box-perfil .box-item{
+		width: 180px;
+		min-width: unset;
+		padding: 20px;
+	}
+}
+@media only screen and (max-width: 600px) {
+    .page.home .box-acciones button{
+        margin-bottom: 10px;
+        width: 80%;
+    }
+    .page.home .box-bienvenida .box-principal h3{
+        font-size: 20px;
+    }
+    .page.home .box-bienvenida .box-principal .box-principal-content{
+        left: 0;
+        margin: 10px 20px;
+    }
+    .page.home .box-bienvenida .box-item {
+        font-size: 15px;
+        padding: 20px 25px;
+    }
+    .page.home .box-bienvenida .box-agendar-ahora .box-icono > img {
+        height: 56px;
+    }
+    .page.home .box-bienvenida .box-titulo > a{
+        padding-top: 18px;
+    }
+}

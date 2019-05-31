@@ -50,42 +50,43 @@
                     <img src="./assets/img/perfil/peso.png" alt="Peso" />
                     <div class="box-item-rpta">
                         <span class="pre-valor">PESO</span>
-                        <span class="valor"> 80 </span> <span class="post-valor">Kg.</span>
+                        <span class="valor"> {{ fPerfil.peso }} </span> <span class="post-valor">Kg.</span>
                     </div> 
                 </div>
                 <div class="box-item">
                     <img src="./assets/img/perfil/talla.png" alt="Estatura" />
                     <div class="box-item-rpta">
                         <span class="pre-valor">ESTATURA</span>
-                        <span class="valor">1.70 </span> <span class="post-valor">Mt.</span>
+                        <span class="valor"> {{ fPerfil.estatura / 100 }}</span> <span class="post-valor">Mt.</span>
                     </div> 
                 </div>
                 <div class="box-item">
                     <img src="./assets/img/perfil/imc.png" alt="IMC" />
                     <div class="box-item-rpta">
                         <span class="pre-valor">IMC</span>
-                        <span class="valor">27.68</span>
+                        <span class="valor">{{ fPerfil.imc }}</span>
                     </div>
                 </div>
                 <div class="box-item">
                     <img src="./assets/img/perfil/sangre.png" alt="Tipo de Sangre" />
                     <div class="box-item-rpta">
                         <span class="pre-valor">TIPO DE SANGRE</span>
-                        <span class="valor">B</span> <span class="post-valor"> + </span>
+                        <span class="valor">{{ fPerfil.tipo_sangre }} </span>
                     </div> 
+                <!-- </span> <span class="post-valor"> -->
                 </div>
                 <div class="box-item">
                     <img src="./assets/img/perfil/sexo.png" alt="Sexo" />
                     <div class="box-item-rpta">
                         <span class="pre-valor">SEXO</span>
-                        <span class="valor">M</span>
+                        <span class="valor">{{ fPerfil.sexo }}</span>
                     </div>
                 </div>
                 <div class="box-item">
                     <img src="./assets/img/perfil/edad.png" alt="Edad" />
                     <div class="box-item-rpta">
                         <span class="pre-valor">EDAD</span>
-                        <span class="valor">25</span> <span class="post-valor"> AÑOS </span>
+                        <span class="valor">{{ fPerfil.edad }}</span> <span class="post-valor"> AÑOS </span>
                     </div> 
                 </div>
                 <div class="box-action-edit">
@@ -101,3 +102,5 @@
         </div>
     </div>
 </div>
+<app-ngx-notifier [className]="'notify-cp'" ></app-ngx-notifier>
+<ngx-ui-loader bgsColor="#FFFFFF" fgsColor="#FFFFFF" overlayColor="rgba(255,255,255,.8)" logoUrl="./assets/img/loader-logo-1.gif"></ngx-ui-loader>

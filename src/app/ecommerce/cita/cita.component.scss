@@ -6,7 +6,7 @@
 .page.cita .box-filtros{
     padding: 16px 22px;
     border: 1px solid $accent;
-    border-radius: 15px;
+    border-radius: 20px 0 20px 0;
 }
 .page.cita .box-filtros .mat-form-field{
     width: 100%;
@@ -27,11 +27,19 @@
     width: 100%;
     margin-top: 12px;
 }
+.page.cita section.section-active{
+    border: 2px solid #829723;
+}
+.page.cita section.section-inactive{
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
 .page.cita .box-calendario{
     margin: 0 24px;
     padding: 16px 22px;
     border: 1px solid $accent;
-    border-radius: 15px;
+    border-radius: 20px 0 20px 0;
 }
 .page.cita .box-calendario .box-content-calendario{
     margin-bottom: 15px;
@@ -102,6 +110,7 @@
 }
 .page.cita .box-calendario .box-dias .box-row {
     display: flex;
+    justify-content: center;
 }
 .page.cita .box-calendario .box-dias .box-row .box-dia{
     width: 45px;
@@ -154,7 +163,7 @@
 .page.cita .box-confirmacion{
     padding: 16px 22px;
     border: 1px solid $accent;
-    border-radius: 15px;
+    border-radius: 20px 0 20px 0;
 }
 .page.cita .box-confirmacion .box-resumen{
     font-size: 16px;
@@ -185,4 +194,33 @@
 }
 .page.cita .box-confirmacion .box-action{
     padding-top: 10px;
+}
+@media only screen and (max-width: 960px){
+	.page.cita {
+		padding-top: 40px;
+		margin-right: 60px;
+    }
+    .page.cita section.section-active{
+        width: 80%;
+        margin-bottom: 20px;
+    }
+    .page.cita section.section-inactive{
+        width: 80%;
+        margin-bottom: 20px;
+    }
+    .page.cita section.section-inactive{
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+@media only screen and (max-width: 960px){
+    .page.cita section.section-active{
+        width: 94%;
+    }
+    .page.cita section.section-inactive{
+        width: 94%;
+    }
+    .page.cita section.section-inactive{
+        width: 94%;
+    }
 }

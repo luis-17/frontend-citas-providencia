@@ -11,7 +11,6 @@ export class NeedAuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const redirectUrl = route['_routerState']['url'];
     if (this.tokenService.isLogged()) { 
-      console.log('load me');
       this.getInitConfig.emit({ class: '', login: false });
       return true;
     }
