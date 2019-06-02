@@ -1,5 +1,5 @@
-export const webServiceEndpoint: String = 'http://localhost:8080/api/';
-export const urlFile: String = 'http://localhost/api-citas-providencia/uploads/';
+export const webServiceEndpoint: String = 'http://localhost:9090/api-citas-providencia/public/api/';
+export const urlFile: String = 'http://localhost:9090//api-citas-providencia/uploads/';
 export const listEndpoints: any = {
     login: 'login',
     registroPaciente: 'registro',
