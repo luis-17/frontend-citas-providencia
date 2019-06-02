@@ -1,4 +1,4 @@
-export const webServiceEndpoint: String = 'http://localhost:8080/api/';
+export const webServiceEndpoint: String = 'http://localhost/api-citas-providencia/public/api/';
 export const urlFile: String = 'http://localhost/api-citas-providencia/uploads/';
 export const listEndpoints: any = {
     login: 'login',
@@ -18,4 +18,5 @@ export const listEndpoints: any = {
     cargaCitasPendientes: 'platform/cargar_citas_pendientes',
     cargaCitasRealizadas: 'platform/cargar_citas_realizadas',
     anulaCita: 'platform/anular_cita',
+    cargaEspecialidades: 'platform/cargar_especialidades',
 };

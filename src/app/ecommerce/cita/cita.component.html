@@ -19,7 +19,7 @@
               <mat-label>SELECCIONE LA ESPECIALIDAD</mat-label>
               <mat-select  placeholder="ESPECIALIDAD" formControlName="especialidad" required>
                 <mat-option *ngFor="let row of arrEspecialidad" [value]="row.id">
-                    {{row.especialidad}}
+                    {{row.descripcion}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
