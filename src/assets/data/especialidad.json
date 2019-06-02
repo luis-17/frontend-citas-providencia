@@ -1,0 +1,360 @@
+{
+    "datos": [
+        {
+            "idespecialidad": "1",
+            "codigo": "0001",
+            "descripcion": "ODONTOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "2",
+            "codigo": "0002",
+            "descripcion": "UROLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "3",
+            "codigo": "0003",
+            "descripcion": "ENDOCRINOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "4",
+            "codigo": "0004",
+            "descripcion": "GASTROENTEROLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "5",
+            "codigo": "0005",
+            "descripcion": "REUMATOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "6",
+            "codigo": "0006",
+            "descripcion": "CIRUGIA GENERAL",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "8",
+            "codigo": "0008",
+            "descripcion": "PEDIATRIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "9",
+            "codigo": "0009",
+            "descripcion": "GINECOLOGIA Y OBSTETRICIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "10",
+            "codigo": "0010",
+            "descripcion": "NEFROLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "12",
+            "codigo": "0012",
+            "descripcion": "HEMATOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "13",
+            "codigo": "0013",
+            "descripcion": "MEDICINA INTERNA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "14",
+            "codigo": "0014",
+            "descripcion": "TRAUMATOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "15",
+            "codigo": "0015",
+            "descripcion": "NEUROLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "17",
+            "codigo": "0017",
+            "descripcion": "OTORRINOLARINGOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "18",
+            "codigo": "0018",
+            "descripcion": "NEUMOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "19",
+            "codigo": "0019",
+            "descripcion": "PSIQUIATRIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "20",
+            "codigo": "0020",
+            "descripcion": "DERMATOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "21",
+            "codigo": "0021",
+            "descripcion": "CIRUGIA PLASTICA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "22",
+            "codigo": "0022",
+            "descripcion": "OFTALMOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "23",
+            "codigo": "0023",
+            "descripcion": "NEUROCIRUGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "24",
+            "codigo": "0024",
+            "descripcion": "CIRUGIA PEDIATRICA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "25",
+            "codigo": "0025",
+            "descripcion": "CARDIOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "28",
+            "codigo": "0028",
+            "descripcion": "ANESTESIOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "30",
+            "codigo": "0030",
+            "descripcion": "EMERGENCIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "31",
+            "codigo": "0031",
+            "descripcion": "GERIATRIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "32",
+            "codigo": "0032",
+            "descripcion": "GASTROPEDIATRIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "33",
+            "codigo": "0033",
+            "descripcion": "INFECTOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "34",
+            "codigo": "0034",
+            "descripcion": "RADIOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "39",
+            "codigo": "0039",
+            "descripcion": "NUTRICION",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "41",
+            "codigo": "0041",
+            "descripcion": "ALERGIA E INMUNOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "43",
+            "codigo": "0043",
+            "descripcion": "PATOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "44",
+            "codigo": "0044",
+            "descripcion": "CGIA CABEZA CUELLO Y MAXIMO FACIAL",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "45",
+            "codigo": "0045",
+            "descripcion": "LABORATORIO",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "46",
+            "codigo": "0046",
+            "descripcion": "CIRUGIA DE MANO",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "47",
+            "codigo": "0047",
+            "descripcion": "CIRUGIA DE TORAX CARDIOVASCULAR",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "52",
+            "codigo": "0052",
+            "descripcion": "MEDICINA FISICA Y REHABILITACION",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "54",
+            "codigo": "0054",
+            "descripcion": "CARDIOPEDIATRICA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "55",
+            "codigo": "0055",
+            "descripcion": "MEDICINA NUCLEAR",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "67",
+            "codigo": "0067",
+            "descripcion": "TERAPIA DEL DOLOR",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "69",
+            "codigo": "0069",
+            "descripcion": "IMAGENES",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "73",
+            "codigo": "0073",
+            "descripcion": "CIRUGIA ORAL Y MAXILO FACIAL",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "74",
+            "codigo": "0074",
+            "descripcion": "BIOQUIMICA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "75",
+            "codigo": "75",
+            "descripcion": "LABORATORIO PATOLOGICO",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "76",
+            "codigo": "0076",
+            "descripcion": "ENFERM. INFECCIOSAS Y TROPICALE",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "77",
+            "codigo": "0077",
+            "descripcion": "PSICOLOGIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "78",
+            "codigo": "0078",
+            "descripcion": "MEDICINA PREVENTIVA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "79",
+            "codigo": "0079",
+            "descripcion": "ONCOLOGIA CLINICA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "80",
+            "codigo": "0080",
+            "descripcion": "SALUD OCUPACIONAL",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "82",
+            "codigo": "0082",
+            "descripcion": "CONTROL NIÑO SANO - LACTANCIA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "83",
+            "codigo": "0083",
+            "descripcion": "MEDICINA REGENERATIVA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "84",
+            "codigo": "0084",
+            "descripcion": "MEDICINA GENERAL",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "85",
+            "codigo": "0085",
+            "descripcion": "MEDICINA GENERAL - CHEQUEO",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "87",
+            "codigo": "0086",
+            "descripcion": "NEUMOLOGO PEDIATRA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "88",
+            "codigo": "0087",
+            "descripcion": "PEDIATRIA/ENDOCRINO PEDIATRA",
+            "adicionales": "6"
+        },
+        {
+            "idespecialidad": "89",
+            "codigo": "0089",
+            "descripcion": "TRAUMATOLOGIA/TRAUMATOLOGIA PEDIATRICA",
+            "adicionales": "5"
+        },
+        {
+            "idespecialidad": "92",
+            "codigo": "0091",
+            "descripcion": "CIRUGIA GRAL/CIRUGIA ONCOLOGIC",
+            "adicionales": "4"
+        },
+        {
+            "idespecialidad": "93",
+            "codigo": "0090",
+            "descripcion": "OFTALMOLOGIA PEDIATRICA",
+            "adicionales": "5"
+        },
+        {
+            "idespecialidad": "94",
+            "codigo": "0092",
+            "descripcion": "TRAUMATOLOGIA/CIRUGIA DE MANO",
+            "adicionales": "5"
+        },
+        {
+            "idespecialidad": "95",
+            "codigo": "0093",
+            "descripcion": "NEUROLOGIA/NEUROLOGIA PEDIATRICA",
+            "adicionales": "10"
+        }
+    ],
+    "flag": 1,
+    "message": "Se encontraron especialidades"
+}

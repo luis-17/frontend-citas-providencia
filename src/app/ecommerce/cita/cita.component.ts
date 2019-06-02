@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { CustomValidators } from 'ngx-custom-validators';
 import { NgxNotifierService } from 'ngx-notifier';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
@@ -7,6 +8,7 @@ import { MatDialog } from '@angular/material';
 
 import { PacienteService } from '../../services/paciente.services';
 import { ParentescoService } from '../../services/parentesco.services';
+import { EspecialidadService } from '../../services/especialidad.services';
 
 import { EleccionTurnoComponent } from "../cita/popup-turno/eleccion.turno.component";
 import { ConfPagarCitaComponent } from "../cita/conf.pagar.cita/conf.pagar.cita.component";
@@ -20,7 +22,9 @@ export class CitaComponent {
   constructor(
     public dialog: MatDialog,
     private pacienteService: PacienteService,
-    private parentescoService: ParentescoService
+    private parentescoService: ParentescoService,
+    private especialidadService: EspecialidadService,
+    private http: HttpClient,
   ) { }
   page = 'cita';
   arrPacientes = ['a','b'];
@@ -35,11 +39,20 @@ export class CitaComponent {
     medico: null 
   };
   ngOnInit() {
+    // PACIENTE
     this.pacienteService.listarPacientes().subscribe(
       r => {
         this.arrPacientes = r.datos;
         console.log(this.arrPacientes, 'r.datos');
       });
+    // ESPECIALIDAD
+    this.especialidadService.cargarEspecialidades().subscribe(
+      r => {
+        this.arrPacientes = r.datos;
+        console.log(this.arrPacientes, 'r.datos');
+        // this.arrPacientes = this.http.get('./assets/data/especialidad.json')
+      });
+    // PARENTESCO
     this.parentescoService.listar().subscribe(
       r => {
         // console.log(r, 'rrrr');

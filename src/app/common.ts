@@ -18,4 +18,5 @@ export const listEndpoints: any = {
     cargaCitasPendientes: 'platform/cargar_citas_pendientes',
     cargaCitasRealizadas: 'platform/cargar_citas_realizadas',
     anulaCita: 'platform/anular_cita',
+    cargaEspecialidades: 'platform/cargar_especialidades',
 };
