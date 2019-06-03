@@ -15,4 +15,7 @@ export class EspecialidadService {
   cargarEspecialidades(): Observable<DefaultResponse>{
     return this.http.get<DefaultResponse>(`${webServiceEndpoint}${listEndpoints.cargaEspecialidades}`);
   }
+  cargarMedicosEspecialidad(params): Observable<DefaultResponse>{
+    return this.http.post<DefaultResponse>(`${webServiceEndpoint}${listEndpoints.cargaMedicosEspecialidad}`, params);
+  }
 }

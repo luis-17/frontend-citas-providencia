@@ -19,4 +19,5 @@ export const listEndpoints: any = {
     cargaCitasRealizadas: 'platform/cargar_citas_realizadas',
     anulaCita: 'platform/anular_cita',
     cargaEspecialidades: 'platform/cargar_especialidades',
+    cargaMedicosEspecialidad: 'platform/cargar_medicos_por_especialidad',
 };

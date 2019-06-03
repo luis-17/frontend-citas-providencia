@@ -17,8 +17,9 @@
           <div class="form-group">
             <mat-form-field class="item field-sm field-cp" appearance="outline">
               <mat-label>SELECCIONE LA ESPECIALIDAD</mat-label>
-              <mat-select  placeholder="ESPECIALIDAD" formControlName="especialidad" required>
-                <mat-option *ngFor="let row of arrEspecialidad" [value]="row.id">
+              <mat-select  placeholder="ESPECIALIDAD" formControlName="especialidad" required 
+              (selectionChange)="listarMedicosPorEspecialidad('201905',$event.value);" >
+                <mat-option *ngFor="let row of arrEspecialidad" [value]="row.idespecialidad" >
                     {{row.descripcion}}
                 </mat-option>
               </mat-select>
@@ -28,8 +29,8 @@
             <mat-form-field class="item field-sm field-cp" appearance="outline">
               <mat-label>SELECCIONE MÉDICO</mat-label>
               <mat-select placeholder="MÉDICO" formControlName="medico" required>
-                <mat-option *ngFor="let row of arrMedico" [value]="row.id">
-                  {{row.medico}}
+                <mat-option *ngFor="let row of arrMedico" [value]="row.idmedico">
+                  {{row.descripcion}}
                 </mat-option>
               </mat-select>
             </mat-form-field>

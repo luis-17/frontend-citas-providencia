@@ -27,7 +27,7 @@ export class CitaComponent {
     private http: HttpClient,
   ) { }
   page = 'cita';
-  arrPacientes = ['a','b'];
+  arrPacientes = [];
   arrEspecialidad = [];
   arrParentesco = [];
   arrMedico = [];
@@ -43,13 +43,11 @@ export class CitaComponent {
     this.pacienteService.listarPacientes().subscribe(
       r => {
         this.arrPacientes = r.datos;
-        console.log(this.arrPacientes, 'r.datos');
       });
     // ESPECIALIDAD
     this.especialidadService.cargarEspecialidades().subscribe(
       r => {
-        this.arrPacientes = r.datos;
-        console.log(this.arrPacientes, 'r.datos');
+        this.arrEspecialidad = r.datos;
         // this.arrPacientes = this.http.get('./assets/data/especialidad.json')
       });
     // PARENTESCO
@@ -59,7 +57,14 @@ export class CitaComponent {
         this.arrParentesco = r.datos;
       });
   }
-  
+  listarMedicosPorEspecialidad(periodo, idespecialidad){
+    console.log('change me xD');
+    this.especialidadService.cargarMedicosEspecialidad({periodo, idespecialidad}).subscribe(
+      r => {
+        this.arrMedico = r.datos;
+        // this.arrPacientes = this.http.get('./assets/data/especialidad.json')
+      });
+  }
   procesarCita(){
     
   }
