@@ -7,8 +7,8 @@
           <div class="form-group">
             <mat-form-field class="item field-sm field-cp" appearance="outline">
               <mat-label>LA CITA ES PARA: </mat-label>
-              <mat-select  placeholder="LA CITA ES PARA:" formControlName="paciente">
-                <mat-option *ngFor="let row of arrPacientes" [value]="row.id" required [disabled]="!row.habilitado">
+              <mat-select  placeholder="LA CITA ES PARA:" formControlName="paciente" required>
+                <mat-option *ngFor="let row of arrPacientes" [value]="row.id" [disabled]="!row.habilitado">
                     {{row.paciente}}
                 </mat-option>
               </mat-select>
@@ -18,7 +18,7 @@
             <mat-form-field class="item field-sm field-cp" appearance="outline">
               <mat-label>SELECCIONE LA ESPECIALIDAD</mat-label>
               <mat-select  placeholder="ESPECIALIDAD" formControlName="especialidad" required 
-              (selectionChange)="listarMedicosPorEspecialidad('201905',$event.value);" >
+              (selectionChange)="listarMedicosPorEspecialidad($event.value);" >
                 <mat-option *ngFor="let row of arrEspecialidad" [value]="row.idespecialidad" >
                     {{row.descripcion}}
                 </mat-option>
@@ -39,8 +39,8 @@
             <mat-form-field class="item field-sm field-cp" appearance="outline">
               <mat-label>SELECCIONE GARANTE</mat-label>
               <mat-select placeholder="GARANTE" formControlName="garante" required>
-                <mat-option *ngFor="let row of arrGarante" [value]="row.id">
-                    {{row.garante}}
+                <mat-option *ngFor="let row of arrGarante" [value]="row.idgarante">
+                    {{row.descripcion_gar}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
