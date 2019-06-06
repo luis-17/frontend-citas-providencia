@@ -1,5 +1,5 @@
-export const webServiceEndpoint: String = 'http://localhost:9090/api-citas-providencia/public/api/';
-export const urlFile: String = 'http://localhost:9090//api-citas-providencia/uploads/';
+export const webServiceEndpoint: String = 'http://localhost/api-citas-providencia/public/api/';
+export const urlFile: String = 'http://localhost/api-citas-providencia/uploads/';
 export const listEndpoints: any = {
     login: 'login',
     registroPaciente: 'registro',
@@ -21,4 +21,6 @@ export const listEndpoints: any = {
     cargaEspecialidades: 'platform/cargar_especialidades',
     cargaMedicosEspecialidad: 'platform/cargar_medicos_por_especialidad',
     cargaGarantes: 'platform/cargar_garante',
+    cargaCalendarioMes: 'platform/cargar_fechas_programadas',
+    cargaCalendarioMock: 'platform/cargar_fechas_mock',
 };

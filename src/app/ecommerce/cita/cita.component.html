@@ -1,7 +1,9 @@
+<app-ngx-notifier [className]="'notify-cp'" ></app-ngx-notifier>
+<ngx-ui-loader bgsColor="#FFFFFF" fgsColor="#FFFFFF" overlayColor="rgba(255,255,255,.8)" logoUrl="./assets/img/loader-logo-1.gif"></ngx-ui-loader>
 <div class="page cita">
   <div class="container">
     <div class="row">
-      <section class="box-filtros section-active">
+      <section class="box-filtros {{ paso1 }}">
         <form (ngSubmit)="formCitaPaciente.valid && procesarPaso1Exec();" [formGroup]="formCitaPaciente" name="formCitaPaciente">
           <h4> <strong> PASO 1: </strong> Seleccione Filtros </h4>
           <div class="form-group">
@@ -16,9 +18,9 @@
           </div>
           <div class="form-group">
             <mat-form-field class="item field-sm field-cp" appearance="outline">
-              <mat-label>SELECCIONE LA ESPECIALIDAD</mat-label>
+              <mat-label>SELECCIONE LA ESPECIALIDAD {{especialidad}} </mat-label>
               <mat-select  placeholder="ESPECIALIDAD" formControlName="especialidad" required 
-              (selectionChange)="listarMedicosPorEspecialidad($event.value);" >
+              (selectionChange)="getMedicosPorEspecialidad($event.value);" >
                 <mat-option *ngFor="let row of arrEspecialidad" [value]="row.idespecialidad" >
                     {{row.descripcion}}
                 </mat-option>
@@ -28,7 +30,8 @@
           <div class="form-group">
             <mat-form-field class="item field-sm field-cp" appearance="outline">
               <mat-label>SELECCIONE MÉDICO</mat-label>
-              <mat-select placeholder="MÉDICO" formControlName="medico" required>
+              <mat-select placeholder="MÉDICO" formControlName="medico" required
+              (selectionChange)="getCalendarioMes(null,$event.value);">
                 <mat-option *ngFor="let row of arrMedico" [value]="row.idmedico">
                   {{row.descripcion}}
                 </mat-option>
@@ -45,75 +48,33 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="box-action">
+          <!-- <div class="box-action">
             <button class="btn primary" mat-raised-button color="primary">PROCESAR</button> 
-          </div>
+          </div> -->
         </form>
       </section>
-      <section class="box-calendario section-inactive">
+      <section class="box-calendario {{ paso2 }}">
         <h4> <strong> PASO 2: </strong> Elija su Turno </h4>
         <div class="box-content-calendario">
           <div class="box-title-mes">
-            <p> Marzo </p> 
+            <p> {{ arrCalendario.mes }} </p> 
             <div class="box-paginate">
-              <div class="icon icon-prev"><mat-icon>keyboard_arrow_left</mat-icon> </div>
-              <div class="icon icon-next"><mat-icon>keyboard_arrow_right</mat-icon> </div>
+              <div (click)="getCalendarioActions('prev');" class="icon icon-prev"><mat-icon>keyboard_arrow_left</mat-icon> </div>
+              <div (click)="getCalendarioActions('next');" class="icon icon-next"><mat-icon>keyboard_arrow_right</mat-icon> </div>
             </div> 
           </div>
           <div class="box-title-semana">
+            <div class="item-semana feriado"> Dom. </div>
             <div class="item-semana"> Lun. </div>
             <div class="item-semana"> Mar. </div>
             <div class="item-semana"> Mie. </div>
             <div class="item-semana"> Jue. </div>
             <div class="item-semana"> Vie. </div>
             <div class="item-semana"> Sab. </div>
-            <div class="item-semana feriado"> Dom. </div>
           </div>
           <div class="box-dias">
-            <div class="box-row">
-              <div class="box-dia"> </div>
-              <div class="box-dia"> </div>
-              <div class="box-dia"> </div>
-              <div class="box-dia"> </div>
-              <div class="box-dia"> 01 </div>
-              <div class="box-dia"> 02 </div>
-              <div class="box-dia"> 03 </div>
-            </div>
-            <div class="box-row">
-              <div class="box-dia"> 04 </div>
-              <div class="box-dia"> 05 </div>
-              <div class="box-dia"> 06 </div>
-              <div class="box-dia"> 07 </div>
-              <div class="box-dia"> 08 </div>
-              <div class="box-dia"> 09 </div>
-              <div class="box-dia"> 10 </div>
-            </div>
-            <div class="box-row">
-              <div class="box-dia"> 11 </div>
-              <div class="box-dia"> 12 </div>
-              <div class="box-dia"> 13 </div>
-              <div class="box-dia active"v (click)="openDialogTurno();"> 14 </div>
-              <div class="box-dia active"> 15 </div>
-              <div class="box-dia active"> 16 </div>
-              <div class="box-dia"> 17 </div>
-            </div>
-            <div class="box-row">
-              <div class="box-dia"> 18 </div>
-              <div class="box-dia"> 19 </div>
-              <div class="box-dia"> 20 </div>
-              <div class="box-dia active"> 21 </div>
-              <div class="box-dia active"> 22 </div>
-              <div class="box-dia active"> 23 </div>
-              <div class="box-dia"> 24 </div>
-            </div>
-            <div class="box-row">
-              <div class="box-dia active"> 25 </div>
-              <div class="box-dia active"> 26 </div>
-              <div class="box-dia active"> 27 </div>
-              <div class="box-dia active"> 28 </div>
-              <div class="box-dia active"> 29 </div>
-              <div class="box-dia active"> 30 </div>
-              <div class="box-dia"> 31 </div>
+            <div class="box-row" *ngFor="let row of arrCalendario.calendario">
+              <div class="box-dia {{ rowDet.class }} " *ngFor="let rowDet of row"> {{ rowDet.dia }} </div>
             </div>
           </div>
         </div>
@@ -128,7 +89,7 @@
           </div>
         </div>
       </section>
-      <section class="box-confirmacion section-inactive">
+      <section class="box-confirmacion {{paso3}}">
         <h4> <strong> PASO 3: </strong> Confirmación </h4>
         <div class="box-resumen">
           <div class="box-group">

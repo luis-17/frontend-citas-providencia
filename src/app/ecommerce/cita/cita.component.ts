@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material';
 import { PacienteService } from '../../services/paciente.services';
 import { ParentescoService } from '../../services/parentesco.services';
 import { EspecialidadService } from '../../services/especialidad.services';
+import { HorarioService } from '../../services/horario.services';
 import { GaranteService } from '../../services/garante.services';
 
 import { EleccionTurnoComponent } from "../cita/popup-turno/eleccion.turno.component";
@@ -31,14 +32,25 @@ export class CitaComponent {
     private parentescoService: ParentescoService,
     private especialidadService: EspecialidadService,
     private garanteService: GaranteService,
+    private horarioService: HorarioService,
     private http: HttpClient,
   ) { }
   page = 'cita';
-  periodo = moment().format('Y');
+  paso1 = 'section-active';
+  paso2 = 'section-inactive';
+  paso3 = 'section-inactive';
+  periodoActual = (moment().format('Y') + moment().format('MM')).toString();
+  // periodoActual = '201905';
   arrPacientes = [];
   arrEspecialidad = [];
   arrParentesco = [];
   arrMedico = [];
+  arrCalendario = {
+    calendario: [],
+    periodoAnterior: null,
+    periodoSiguiente: null,
+  };
+  showCalendario = false;
   arrGarante = [];
   fData = {
     especialidad: null,
@@ -47,8 +59,6 @@ export class CitaComponent {
     medico: null 
   };
   ngOnInit() {
-    console.log(moment().format('Y'),'y');
-    console.log(moment().format('m'), 'm');
     // PACIENTE
     this.pacienteService.listarPacientes().subscribe(
       r => {
@@ -58,31 +68,97 @@ export class CitaComponent {
     this.especialidadService.cargarEspecialidades().subscribe(
       r => {
         this.arrEspecialidad = r.datos;
-        // this.arrPacientes = this.http.get('./assets/data/especialidad.json')
       });
     // PARENTESCO
     this.parentescoService.listar().subscribe(
       r => {
-        // console.log(r, 'rrrr');
         this.arrParentesco = r.datos;
       });
     // GARANTE
     this.garanteService.listar().subscribe(
       r => {
-        // console.log(r, 'rrrr');
         this.arrGarante = r.datos;
       });
+    // MOCK FECHAS
+    this.getCalendarioMock(null, false);
   }
-  listarMedicosPorEspecialidad(idespecialidad){
-    // console.log('change me xD');
+  getMedicosPorEspecialidad(idespecialidad){
+    console.log(idespecialidad, 'idespecialidadidespecialidad');
     this.ngxLoader.start(); 
-    this.especialidadService.cargarMedicosEspecialidad({periodo, idespecialidad}).subscribe(
+    this.especialidadService.cargarMedicosEspecialidad({periodo: this.periodoActual, idespecialidad}).subscribe(
       r => {
         this.arrMedico = r.datos;
+        this.paso2 = 'section-active';
+        this.ngxLoader.stop();
         // this.arrPacientes = this.http.get('./assets/data/especialidad.json')
       }, 
 			r => {
-				this._ngxNotifierService.createToast(JSON.stringify(r.message), 'danger', 4000);
+        this.arrMedico = [];
+        this._ngxNotifierService.createToast(JSON.stringify(r.error.message), 'warning', 6000);
+        this.paso2 = 'section-active';
+				this.ngxLoader.stop();
+    });
+  }
+  getCalendarioActions(dir){
+    if(dir === 'prev'){
+      this.periodoActual = this.arrCalendario.periodoAnterior;
+    }
+    if(dir === 'next'){
+      this.periodoActual = this.arrCalendario.periodoSiguiente;
+    }
+    // console.log(this.periodoActual, 'this.periodoActualll');
+    const idpaciente = this.formCitaPaciente.get('paciente').value;
+    const idmedico = this.formCitaPaciente.get('medico').value;
+    const idespecialidad = this.formCitaPaciente.get('especialidad').value;
+    // console.log(this.periodoActual, 'periodo');
+    // console.log(idmedico, 'idmedico');
+    if (!idpaciente) {
+      this._ngxNotifierService.createToast('Seleccione al paciente antes de navegar por el calendario', 'warning', 5000);
+      return false;
+    }
+    if (!idespecialidad) {
+      this._ngxNotifierService.createToast('Seleccione especialidad antes de navegar por el calendario', 'warning', 5000);
+      return false;
+    }
+    if (!idmedico) {
+      this.getCalendarioMock(this.periodoActual, true);
+      this._ngxNotifierService.createToast('Seleccione el médico deseado', 'warning', 5000);
+      return false;
+    }
+    
+    this.getCalendarioMes(this.periodoActual, idmedico);
+  }
+  getCalendarioMock(argPeriodo, flagMedico){
+    const periodo = argPeriodo || this.periodoActual;
+    this.horarioService.listarMock({ periodo }).subscribe(
+      r => {
+        this.arrCalendario = r.datos;
+        const idespecialidad = this.formCitaPaciente.get('especialidad').value;
+        if (flagMedico === true) {
+          this.getMedicosPorEspecialidad(idespecialidad);
+        }
+      });
+  }
+  getCalendarioMes(argPeriodo = null, idmedico){
+    // console.log('change me xD');
+    // console.log();
+    const idespecialidad = this.formCitaPaciente.get('especialidad').value;
+    const periodo = argPeriodo || this.periodoActual;
+    // console.log(periodo, 'periodo');
+    this.ngxLoader.start(); 
+    this.horarioService.listarCalendarioMes({periodo, idespecialidad, idmedico}).subscribe(
+      r => {
+        this.arrCalendario = r.datos;
+        // this.showCalendario = true;
+        // this.paso2 = 'section-active';
+        this.ngxLoader.stop();
+      }, 
+			r => {
+        this.arrCalendario = r.datos;
+        // this.showCalendario = false;
+        // this.paso2 = 'section-inactive';
+        console.log(r.error,'rrrr.error');
+				this._ngxNotifierService.createToast(JSON.stringify(r.error.message), 'warning', 6000);
 				this.ngxLoader.stop();
     });
   }
@@ -118,7 +194,7 @@ export class CitaComponent {
 		paciente : new FormControl('', [Validators.required]),
 		especialidad : new FormControl('', [Validators.required]),
 		medico : new FormControl('', [Validators.required]),
-    garante : new FormControl('', [Validators.required]),
+    garante : new FormControl('', []),
 	});
 
 }
