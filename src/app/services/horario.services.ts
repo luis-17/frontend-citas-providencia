@@ -19,4 +19,8 @@ export class HorarioService {
   listarMock(params): Observable<CalendarioResponse>{
     return this.http.post<CalendarioResponse>(`${webServiceEndpoint}${listEndpoints.cargaCalendarioMock}`, params);
   }
+
+  listarHorario(params): Observable<CalendarioResponse>{
+    return this.http.post<CalendarioResponse>(`${webServiceEndpoint}${listEndpoints.cargaHorario}`, params);
+  }
 }

@@ -10,7 +10,7 @@
             <mat-form-field class="item field-sm field-cp" appearance="outline">
               <mat-label>LA CITA ES PARA: </mat-label>
               <mat-select  placeholder="LA CITA ES PARA:" formControlName="paciente" required>
-                <mat-option *ngFor="let row of arrPacientes" [value]="row.id" [disabled]="!row.habilitado">
+                <mat-option *ngFor="let row of arrPacientes" [value]="row" [disabled]="!row.habilitado">
                     {{row.paciente}}
                 </mat-option>
               </mat-select>
@@ -18,10 +18,10 @@
           </div>
           <div class="form-group">
             <mat-form-field class="item field-sm field-cp" appearance="outline">
-              <mat-label>SELECCIONE LA ESPECIALIDAD {{especialidad}} </mat-label>
+              <mat-label>SELECCIONE LA ESPECIALIDAD </mat-label>
               <mat-select  placeholder="ESPECIALIDAD" formControlName="especialidad" required 
-              (selectionChange)="getMedicosPorEspecialidad($event.value);" >
-                <mat-option *ngFor="let row of arrEspecialidad" [value]="row.idespecialidad" >
+              (selectionChange)="getMedicosPorEspecialidad($event.value.idespecialidad);" >
+                <mat-option *ngFor="let row of arrEspecialidad" [value]="row" >
                     {{row.descripcion}}
                 </mat-option>
               </mat-select>
@@ -31,8 +31,8 @@
             <mat-form-field class="item field-sm field-cp" appearance="outline">
               <mat-label>SELECCIONE MÉDICO</mat-label>
               <mat-select placeholder="MÉDICO" formControlName="medico" required
-              (selectionChange)="getCalendarioMes(null,$event.value);">
-                <mat-option *ngFor="let row of arrMedico" [value]="row.idmedico">
+              (selectionChange)="getCalendarioMes(null,$event.value.idmedico);">
+                <mat-option *ngFor="let row of arrMedico" [value]="row">
                   {{row.descripcion}}
                 </mat-option>
               </mat-select>
@@ -42,7 +42,7 @@
             <mat-form-field class="item field-sm field-cp" appearance="outline">
               <mat-label>SELECCIONE GARANTE</mat-label>
               <mat-select placeholder="GARANTE" formControlName="garante" required>
-                <mat-option *ngFor="let row of arrGarante" [value]="row.idgarante">
+                <mat-option *ngFor="let row of arrGarante" [value]="row">
                     {{row.descripcion_gar}}
                 </mat-option>
               </mat-select>
@@ -74,7 +74,7 @@
           </div>
           <div class="box-dias">
             <div class="box-row" *ngFor="let row of arrCalendario.calendario">
-              <div class="box-dia {{ rowDet.class }} " *ngFor="let rowDet of row"> {{ rowDet.dia }} </div>
+              <div (click)="openDialogTurno(rowDet.fecha, rowDet.class);" class="box-dia {{ rowDet.class }} " *ngFor="let rowDet of row"> {{ rowDet.dia }} </div>
             </div>
           </div>
         </div>
@@ -94,23 +94,24 @@
         <div class="box-resumen">
           <div class="box-group">
             <label class="box-label"> PACIENTE: </label> 
-            <p> LUIS RICARDO LUNA SOTO </p>
+            <p> {{ paciente }} </p>
           </div>
           <div class="box-group">
             <label class="box-label"> ESPECIALIDAD: </label> 
-            <p> CARDIOLOGÍA </p>
+            <p> {{ especialidad }} </p>
           </div>
           <div class="box-group">
             <label class="box-label"> MÉDICO: </label> 
-            <p> FERNANDO CABEZAS QUISPE </p>
+            <p> {{ medico }} </p>
           </div>
           <div class="box-group">
             <label class="box-label"> GARANTE: </label> 
-            <p> PACIFICO EPS </p>
+            <p> {{ garante }} </p>
           </div>
           <div class="box-group">
             <label class="box-label"> FECHA/TURNO: </label> 
-            <p> Viernes 22 de Marzo / 3:30pm. </p>
+            <p> {{ fecha }} / {{ hora }} </p>
+            <!-- <p> Viernes 22 de Marzo / 3:30pm. </p> -->
           </div>
         </div>
         <div class="box-action">

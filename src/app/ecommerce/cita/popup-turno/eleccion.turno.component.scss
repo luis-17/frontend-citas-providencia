@@ -1,6 +1,9 @@
 .box-turnos{
     min-height: 200px;
 }
+.box-eleccion {
+    margin: 16px 0 0;
+}
 .box-eleccion .rb-turno {
     width: auto;
     margin: 8px;
@@ -25,3 +28,68 @@
 .box-turnos .box-action button{
     min-width: 200px;
 }
+
+/* STYLE RADIOBUTTON */
+
+    .box-turnos label{
+        // display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 110px;
+    }
+    /* Hide the browser's default radio button */
+    .box-turnos label input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+  
+  /* Create a custom radio button */
+  .box-turnos label .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .box-turnos label:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .box-turnos label input:checked ~ .checkmark {
+    background-color: #21B8C6;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .box-turnos label .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .box-turnos label input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .box-turnos label .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+  }

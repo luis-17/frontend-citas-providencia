@@ -23,4 +23,5 @@ export const listEndpoints: any = {
     cargaGarantes: 'platform/cargar_garante',
     cargaCalendarioMes: 'platform/cargar_fechas_programadas',
     cargaCalendarioMock: 'platform/cargar_fechas_mock',
+    cargaHorario: 'platform/cargar_horario',
 };
