@@ -74,7 +74,7 @@
           </div>
           <div class="box-dias">
             <div class="box-row" *ngFor="let row of arrCalendario.calendario">
-              <div (click)="openDialogTurno(rowDet.fecha, rowDet.class);" class="box-dia {{ rowDet.class }} " *ngFor="let rowDet of row"> {{ rowDet.dia }} </div>
+              <div [ngClass]="{selected: isSelected(rowDet)}" (click)="openDialogTurno(rowDet.fecha, rowDet.class);" class="box-dia {{ rowDet.class }} " *ngFor="let rowDet of row"> {{ rowDet.dia }} </div>
             </div>
           </div>
         </div>
@@ -86,6 +86,10 @@
           <div class="box-item-leyenda">
             <div class="box-cuadro disabled"> </div>
             <div class="box-label"> NO DISPONIBLE </div>
+          </div>
+          <div class="box-item-leyenda">
+            <div class="box-cuadro selected"> </div>
+            <div class="box-label"> SELECCIONADO </div>
           </div>
         </div>
       </section>

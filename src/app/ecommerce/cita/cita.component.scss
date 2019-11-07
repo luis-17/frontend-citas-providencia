@@ -124,6 +124,12 @@
     opacity: 0.45;
     cursor: not-allowed;
 }
+.page.cita .box-calendario .box-dias .box-row .box-dia.active:hover{
+    background-color: #879b2c;
+    color: white;
+    border: 1px solid white;
+    font-size: 16px;
+}
 .page.cita .box-calendario .box-dias .box-row .box-dia.active{
     border: 1px solid $suplem;
     opacity: 1;
@@ -132,9 +138,15 @@
     font-weight: 600;
     color: $primary;
 }
+.page.cita .box-calendario .box-dias .box-row .box-dia.active.selected{
+    background-color: #879b2c;
+    color: white;
+    border: 1px solid white;
+    font-size: 16px;
+}
 .page.cita .box-leyenda .box-cuadro{
-    width: 45px;
-    height: 35px;
+    width: 35px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -159,6 +171,13 @@
     background-color: #c0f0f4;
     font-weight: 600;
     color: $primary;
+}
+.page.cita .box-leyenda .box-cuadro.selected{
+    background-color: #879b2c;
+    color: white;
+    border: 1px solid white;
+    font-size: 16px;
+    opacity: 1;
 }
 .page.cita .box-confirmacion{
     padding: 16px 22px;

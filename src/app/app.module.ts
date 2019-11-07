@@ -48,7 +48,8 @@ import { PerfilComponent } from './ecommerce/perfil/perfil.component';
 import { ConfirmationComponent } from './core/confirmation/confirmation.component';
 import { ConfAnularCitaComponent } from './ecommerce/historial/conf.anular.cita/conf.anular.cita.component';
 import { ConfAnularFamiliarComponent } from './ecommerce/perfil/conf.anular.familiar/conf.anular.familiar.component';
-import { ConfPagarCitaComponent } from './ecommerce/cita/conf.pagar.cita/conf.pagar.cita.component';
+import { ConfRegistrarCitaComponent } from './ecommerce/cita/conf.registrar.cita/conf.registrar.cita.component';
+import { ConfPagarCitaComponent } from './ecommerce/historial/conf.pagar.cita/conf.pagar.cita.component';
 
 // import { BusquedaClinicaComponent } from './ecommerce/popup-clinica/busqueda.clinica.component';
 
@@ -59,6 +60,7 @@ import { ConfPagarCitaComponent } from './ecommerce/cita/conf.pagar.cita/conf.pa
     FamiliarComponent,
     ConfAnularCitaComponent,
     ConfAnularFamiliarComponent,
+    ConfRegistrarCitaComponent,
     ConfPagarCitaComponent,
   ],
   declarations: [
@@ -79,6 +81,7 @@ import { ConfPagarCitaComponent } from './ecommerce/cita/conf.pagar.cita/conf.pa
     ConfirmationComponent,
     ConfAnularCitaComponent,
     ConfAnularFamiliarComponent,
+    ConfRegistrarCitaComponent,
     ConfPagarCitaComponent,
   ],
   imports: [ 
@@ -111,6 +114,7 @@ import { ConfPagarCitaComponent } from './ecommerce/cita/conf.pagar.cita/conf.pa
     FamiliarComponent,
     ConfAnularCitaComponent,
     ConfAnularFamiliarComponent,
+    ConfRegistrarCitaComponent,
     ConfPagarCitaComponent,
   ],
   providers: [NeedAuthGuard, {

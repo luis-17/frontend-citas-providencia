@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 import { NgxNotifierService } from 'ngx-notifier';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ConfAnularCitaComponent } from "../historial/conf.anular.cita/conf.anular.cita.component";
+import { ConfPagarCitaComponent } from "../historial/conf.pagar.cita/conf.pagar.cita.component";
 import { CitaService } from '../../services/cita.services';
 @Component({
   selector: 'app-historial',
@@ -32,6 +33,16 @@ export class HistorialComponent implements OnInit {
       data: {
         idcita: params,
       }
+    }); 
+    dialogRef.afterClosed().subscribe(() => {
+      this.cargarCitasPendientes();
+      this.cargarCitasRealizadas();
+    }); 
+  }
+  openConfirmPagarCita(params){
+    const dialogRef = this.dialog.open(ConfPagarCitaComponent, {
+      width: '640px',
+      data: params
     }); 
     dialogRef.afterClosed().subscribe(() => {
       this.cargarCitasPendientes();

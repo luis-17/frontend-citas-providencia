@@ -48,7 +48,7 @@ export class EleccionTurnoComponent{
         r => {
           this.arrHorario = r.datos;
           if(r.flag === 1){
-            this._ngxNotifierService.createToast(JSON.stringify(r.message), 'warning', 6000);
+            this._ngxNotifierService.createToast(JSON.stringify(r.message), 'success', 4000);
           }
           // this.ngxLoader.stop();
         }, 
@@ -59,15 +59,7 @@ export class EleccionTurnoComponent{
         });
         this.formTurno = this.fb.group({
           turno: '',
-          // power: "",
         });
-      // this.formTurno = new FormGroup({
-      //   turno : new FormControl('', [Validators.required]),
-      //   // turno: this.fb.group({
-      //   //   createdBy: "",
-      //   //   publisher: ""
-      //   // }),
-      // });
     }
     elegirTurno(form: HTMLFormElement){
       // console.log(form.value.turno, 'formmm');
@@ -81,11 +73,4 @@ export class EleccionTurnoComponent{
     onDialogClose(): void {
       this.dialogRef.close();
     }
-    // this.formTurno = new FormGroup({
-    //   turno : new FormControl('', [Validators.required]),
-    //   // turno: this.fb.group({
-    //   //   createdBy: "",
-    //   //   publisher: ""
-    //   // }),
-    // });
 }

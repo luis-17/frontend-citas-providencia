@@ -30,7 +30,7 @@
 							</div>
 							<div class="box-detail">
 								<div class="box-nombre">
-									{{row.paciente}}
+									#{{row.idcita}} {{row.paciente}}
 								</div>
 								<div class="box-detaiil-item box-hora">
 									<div class="icon">
@@ -51,8 +51,30 @@
 									<div class="value">{{row.especialidad}}</div>
 								</div>
 								<div class="box-action">
-									<button class="btn btn-rounded btn-sm accent" type="button">PAGAR CITA</button>
-									<button class="btn btn-rounded btn-sm btn-danger" (click)="openConfirmAnularCita(row.idcita);" type="button">ANULAR CITA</button>
+									<!-- <form name="f1" id="f1" action="#" method="POST" class="alignet-form-vpos2">
+										<input type="hidden" name="acquirerId" value="{{row.acquirerId}}">
+										<input type="hidden" name="idCommerce" value="{{row.idCommerce}}">
+										<input type="hidden" name="purchaseOperationNumber" value="{{row.purchaseOperationNumber}}">
+										<input type="hidden" name="purchaseAmount" value="{{row.purchaseAmount}}">
+										<input type="hidden" name="purchaseCurrencyCode" value="{{row.purchaseCurrencyCode}}">
+										<input type="hidden" name="language" value="{{row.language}}">
+										<input id="persona" type="hidden" name="shippingFirstName" value="{{row.shippingFirstName}}">
+										<input type="hidden" name="shippingLastName" value="{{row.shippingLastName}}">
+										<input type="hidden" name="shippingEmail" value="{{row.shippingEmail}}">
+										<input type="hidden" name="shippingAddress" value="{{row.shippingAddress}}">
+										<input type="hidden" name="shippingZIP" value="No ZIP">
+										<input type="hidden" name="shippingCity" value="Lima">
+										<input type="hidden" name="shippingState" value="Lim">
+										<input type="hidden" name="shippingCountry" value="PE">
+										<input type="hidden" name="userCommerce" value="{{row.userCommerce}}">
+										<input type="hidden" name="userCodePayme" value="">
+										<input type="hidden" name="descriptionProducts" value="{{row.descriptionProducts}}">
+										<input type="hidden" name="programmingLanguage" value="{{row.programmingLanguage}}">
+										<input type="hidden" name="purchaseVerification" value="{{row.purchaseVerification}}"> -->
+										<!-- <button onclick="javascript:AlignetVPOS2.openModal('https://integracion.alignetsac.com/','2');" class="btn btn-rounded btn-sm accent" type="button">PAGAR CITA</button> -->
+										<button class="btn btn-rounded btn-sm accent" (click)="openConfirmPagarCita(row);" type="button">PAGAR CITA</button>
+										<button class="btn btn-rounded btn-sm btn-danger" (click)="openConfirmAnularCita(row.idcita);" type="button">ANULAR CITA</button>
+									<!-- </form> -->
 								</div>
 							</div>
 						</div>

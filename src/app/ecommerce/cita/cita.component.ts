@@ -13,7 +13,7 @@ import { HorarioService } from '../../services/horario.services';
 import { GaranteService } from '../../services/garante.services';
 
 import { EleccionTurnoComponent } from "../cita/popup-turno/eleccion.turno.component";
-import { ConfPagarCitaComponent } from "../cita/conf.pagar.cita/conf.pagar.cita.component";
+import { ConfRegistrarCitaComponent } from "../cita/conf.registrar.cita/conf.registrar.cita.component";
 
 import * as moment from 'moment';
 
@@ -35,6 +35,7 @@ export class CitaComponent {
     private horarioService: HorarioService,
     private http: HttpClient,
   ) { }
+  selectedFecha: string;
   objTurno: object;
   // turno: string;
   paciente: string = '-';
@@ -92,24 +93,26 @@ export class CitaComponent {
     this.
       formCitaPaciente.
       valueChanges.
-      subscribe(form => {
+      subscribe((form) => {
         // sessionStorage.setItem('form', JSON.stringify(form));
         console.log(JSON.stringify(form), 'JSON.stringify(form)');
         this.paciente = form.paciente.paciente || '-';
         this.especialidad = form.especialidad.descripcion || '-';
         this.medico = form.medico.descripcion || '-';
         this.garante = form.garante.descripcion_gar || '-';
-        this.fecha = '-';
-        this.hora = '-';
+        // this.fecha = '-';
+        // this.hora = '-';
       });
   }
   getMedicosPorEspecialidad(idespecialidad){
-    console.log(idespecialidad, 'idespecialidadidespecialidad');
+    // console.log(idespecialidad, 'idespecialidadidespecialidad');
     this.ngxLoader.start(); 
     this.especialidadService.cargarMedicosEspecialidad({periodo: this.periodoActual, idespecialidad}).subscribe(
       r => {
         this.arrMedico = r.datos;
         this.paso2 = 'section-active';
+        this.fecha = '-';
+        this.hora = '-';
         this.ngxLoader.stop();
         // this.arrPacientes = this.http.get('./assets/data/especialidad.json')
       }, 
@@ -118,7 +121,11 @@ export class CitaComponent {
         this.medico = '-';
         this._ngxNotifierService.createToast(JSON.stringify(r.error.message), 'warning', 6000);
         this.paso2 = 'section-active';
-				this.ngxLoader.stop();
+        this.isSelected({fecha: null});
+        this.fecha = '-';
+        this.hora = '-';
+        this.ngxLoader.stop();
+        this.getCalendarioMock(this.periodoActual, false);
     });
   }
   getCalendarioActions(dir){
@@ -171,25 +178,49 @@ export class CitaComponent {
     this.horarioService.listarCalendarioMes({periodo, idespecialidad, idmedico}).subscribe(
       r => {
         this.arrCalendario = r.datos;
+        this.fecha = '-';
+        this.hora = '-';
         // this.showCalendario = true;
         // this.paso2 = 'section-active';
         this.ngxLoader.stop();
+        // this._ngxNotifierService.createToast(JSON.stringify(r.message), 'success', 6000);
       }, 
 			r => {
         this.arrCalendario = r.datos;
+        this.fecha = '-';
+        this.hora = '-';
         // this.showCalendario = false;
         // this.paso2 = 'section-inactive';
-        console.log(r.error,'rrrr.error');
+        this.isSelected({fecha: null});
 				this._ngxNotifierService.createToast(JSON.stringify(r.error.message), 'warning', 6000);
 				this.ngxLoader.stop();
     });
   }
+  isSelected(item) {
+    // console.log(item, 'itemmm');
+    // if(!item) return null;
+    return this.selectedFecha === item.fecha;
+  };
   procesarCita(){
     
   }
   confirmarCita(){
-    const dialogRef = this.dialog.open(ConfPagarCitaComponent, {
+    // this.selectedFecha = fecha; 
+    const paciente = this.formCitaPaciente.get('paciente').value;
+    const especialidad = this.formCitaPaciente.get('especialidad').value;
+    const medico = this.formCitaPaciente.get('medico').value;
+    const garante = this.formCitaPaciente.get('garante').value;
+    console.log(this.selectedFecha, 'this.selectedFechaaa');
+    const dialogRef = this.dialog.open(ConfRegistrarCitaComponent, {
       width: '640px',
+      data: {
+        fecha: this.selectedFecha,
+        paciente,
+        especialidad,
+        medico,
+        garante,
+        turno: this.objTurno,
+      }
     }); 
     dialogRef.afterClosed().subscribe(() => {
       // this.fEmpl.fullname = localStorage.getItem('fullname');
@@ -200,6 +231,7 @@ export class CitaComponent {
     if(!(clase.trim() === 'active')){
       return false;
     }
+    this.selectedFecha = fecha; 
     const idespecialidad = this.formCitaPaciente.get('especialidad').value.idespecialidad;
     const idmedico = this.formCitaPaciente.get('medico').value.idmedico;
     const dialogRef = this.dialog.open(EleccionTurnoComponent, {
@@ -213,11 +245,14 @@ export class CitaComponent {
       }
     }); 
     dialogRef.afterClosed().subscribe(result => {
-      // this.objTurno = result.turno;
-      // console.log(this.objTurno, 'this.objTurno');
       this.paso3 = 'section-active';
-      this.fecha = fecha;
-      this.hora = result.turno.hora_inicio;
+      this.fecha = fecha || '-';
+      this.hora = '-';
+      this.objTurno = null;
+      if (result) {
+        this.objTurno = result.turno;
+        this.hora = result.turno.hora_inicio;
+      }
     }); 
   }
   ngAfterViewInit() {

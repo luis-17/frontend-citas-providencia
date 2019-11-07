@@ -1,0 +1,28 @@
+<div class="box-confirmacion">
+  <div class="box-info"> ¿Está seguro de pagar la cita? </div>
+  <div class="box-action">
+    <form name="f1" id="f1" action="#" method="POST" class="alignet-form-vpos2">
+      <input type="hidden" name="acquirerId" value="{{data.acquirerId}}">
+      <input type="hidden" name="idCommerce" value="{{data.idCommerce}}">
+      <input type="hidden" name="purchaseOperationNumber" value="{{data.purchaseOperationNumber}}">
+      <input type="hidden" name="purchaseAmount" value="{{data.purchaseAmount}}">
+      <input type="hidden" name="purchaseCurrencyCode" value="{{data.purchaseCurrencyCode}}">
+      <input type="hidden" name="language" value="{{data.language}}">
+      <input id="persona" type="hidden" name="shippingFirstName" value="{{data.shippingFirstName}}">
+      <input type="hidden" name="shippingLastName" value="{{data.shippingLastName}}">
+      <input type="hidden" name="shippingEmail" value="{{data.shippingEmail}}">
+      <input type="hidden" name="shippingAddress" value="{{data.shippingAddress}}">
+      <input type="hidden" name="shippingZIP" value="No ZIP">
+      <input type="hidden" name="shippingCity" value="Lima">
+      <input type="hidden" name="shippingState" value="Lim">
+      <input type="hidden" name="shippingCountry" value="PE">
+      <input type="hidden" name="userCommerce" value="{{data.userCommerce}}">
+      <input type="hidden" name="userCodePayme" value="">
+      <input type="hidden" name="descriptionProducts" value="{{data.descriptionProducts}}">
+      <input type="hidden" name="programmingLanguage" value="{{data.programmingLanguage}}">
+      <input type="hidden" name="purchaseVerification" value="{{data.purchaseVerification}}">
+      <button type="button" class="btn btn-rounded btn-sm btn-danger" (click)="onDialogClose();">NO</button>
+      <button onclick="javascript:AlignetVPOS2.openModal('https://integracion.alignetsac.com/','2');" class="btn btn-rounded btn-sm accent" type="button">SI</button>
+    </form>
+  </div>
+</div>

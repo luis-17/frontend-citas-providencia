@@ -18,4 +18,10 @@ export class CitaService {
   anularCita(params): Observable<DefaultResponse>{
     return this.http.post<DefaultResponse>(`${webServiceEndpoint}${listEndpoints.anulaCita}`, params);
   }
+  registrarCita(params): Observable<DefaultResponse>{
+    return this.http.post<DefaultResponse>(`${webServiceEndpoint}${listEndpoints.registraCita}`, params);
+  }
+  registrarTransaccion(params): Observable<DefaultResponse>{
+    return this.http.post<DefaultResponse>(`${webServiceEndpoint}${listEndpoints.registraTransaccion}`, params);
+  }
 }
