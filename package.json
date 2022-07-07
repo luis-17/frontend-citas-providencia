@@ -28,7 +28,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.9",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ngx-custom-validators": "^7.0.0",
     "ngx-notifier": "^2.0.2",
     "ngx-ui-loader": "^7.2.2",
